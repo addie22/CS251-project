@@ -1,6 +1,8 @@
 <?php
 include('server.php');
 session_start();
+ini_set('display_errors', 1);
+error_reporting(~0);
 
 
 if (isset($_GET['logout'])) {
@@ -8,6 +10,7 @@ if (isset($_GET['logout'])) {
     unset($_SESSION['username']);
     header('location: home.php');
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +41,7 @@ if (isset($_GET['logout'])) {
                     <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
-                <?php else: ?>
+                <?php else : ?>
                     <li>
                         <p><a href="login.php" style="color: green;">Login</a></p>
                     </li>
@@ -47,9 +50,16 @@ if (isset($_GET['logout'])) {
         </div>
     </div>
     <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
-
+        <form name="frmSearch" method="post" action="search.php">
+            <table width="599" border="1">
+                <tr>
+                    <th>Keyword
+                        <input name="txtKeyword" type="text" id="txtKeyword">
+                        <input type="submit" name="search" value="Search">
+                    </th>
+                </tr>
+            </table>
+        </form>
     </div>
 
     <div class="link-group">
