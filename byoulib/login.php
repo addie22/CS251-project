@@ -45,6 +45,9 @@ include('server.php');
             <button type="submit" name="login_user" class="btn">Login</button>
         </div>
         <p>Not yet a member? <a href="register.php">Sign Up</a></p>
+        <div class="terst">
+        <p>asdadasdad</p>
+        </div>
     </form>
 
 </body>
