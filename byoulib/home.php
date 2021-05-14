@@ -1,5 +1,14 @@
 <?php
 include('server.php');
+session_start();
+
+
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header('location: home.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,32 +34,22 @@ include('server.php');
         </div>
         <div class="right-group">
             <ul>
-                <li><a href="login.php">Login</a></li>
+                <?php if (isset($_SESSION['username'])) : ?>
+                    <li>
+                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <p><a href="login.php" style="color: green;">Login</a></p>
+                    </li>
+                <?php endif ?>
             </ul>
         </div>
-    </div>
-    <div class="content">
-        <!--  notification message -->
-        <?php if (isset($_SESSION['success'])) : ?>
-            <div class="success">
-                <h3>
-                    <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                    ?>
-                </h3>
-            </div>
-        <?php endif ?>
-
-        <!-- logged in user information -->
-        <?php if (isset($_SESSION['username'])) : ?>
-        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-        <p><a href="login.php?logout='1'" style="color: red;">Logout</a></p>
-        <?php endif ?>
     </div>
     <div class="input-group">
         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <button type="button" class="btn btn-outline-primary">search</button>
+
     </div>
 
     <div class="link-group">
@@ -65,9 +64,6 @@ include('server.php');
         </div>
         <div class="myaccount">
             <h4><a href="myaccount.php">My Account</a></h4>
-        </div>
-        <div class="ddddd">
-        <p>dasdasdas</p>
         </div>
     </div>
 </body>

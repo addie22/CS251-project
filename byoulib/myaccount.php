@@ -2,13 +2,6 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must login first";
-    header('location: login.php');
-}
-
-if (!isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
     header('location: login.php');
 }
 ?>
@@ -26,6 +19,26 @@ if (!isset($_GET['logout'])) {
     <div class="haeder">
         <h4>Acoount</h4>
     </div>
+    <div class="nav">
+        <div class="left-group">
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+        <div class="right-group">
+            <ul>
+                <?php if (isset($_SESSION['username'])) : ?>
+                    <li>
+                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <p><a href="login.php" style="color: green;">Login</a></p>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </div>
     <div class="content">
         <!--  notification message -->
         <?php if (isset($_SESSION['success'])) : ?>
@@ -37,12 +50,6 @@ if (!isset($_GET['logout'])) {
                     ?>
                 </h3>
             </div>
-        <?php endif ?>
-
-        <!-- logged in user information -->
-        <?php if (isset($_SESSION['username'])) : ?>
-        <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-        <p><a href="login.php?logout='1'" style="color: red;">Logout</a></p>
         <?php endif ?>
     </div>
 </body>
