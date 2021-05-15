@@ -37,6 +37,7 @@ if (isset($_GET['logout'])) {
         </div>
         <div class="right-group">
             <ul>
+            <li><p><a href="admin/login.php">Login Admin</a></p></li>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>

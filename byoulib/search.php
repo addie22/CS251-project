@@ -9,23 +9,26 @@ if (isset($_POST["txtKeyword"])) {
 }
 
 if (isset($_POST['search'])) {
-    $sql = "SELECT * FROM book WHERE bookname LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' ";
+    $sql = "SELECT * FROM book WHERE bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
     $query = mysqli_query($conn, $sql);
 }
 ?>
-<table width="600" border="1">
+<table width="800" border="1">
     <tr>
         <th width="198">
-            <div align="center">picture</div>
+            <div align="center">Book Cover</div>
         </th>
         <th width="91">
             <div align="center">Book ID</div>
         </th>
-        <th width="98">
+        <th width="198">
             <div align="center">Book name</div>
         </th>
         <th width="198">
-            <div align="center">category</div>
+            <div align="center">Category</div>
+        </th>
+        <th width="198">
+            <div align="center">Author</div>
         </th>
 
     </tr>
@@ -34,18 +37,22 @@ if (isset($_POST['search'])) {
     ?>
         <tr>
             <td>
-                <div align="center"><?php echo $result["picture"]; ?></div>
+                <div align="center"><?php echo $result["bookCover"]; ?></div>
             </td>
             <td>
-                <div align="center"><?php echo $result["bookid"]; ?>
+                <div align="center"><?php echo $result["bookID"]; ?>
             </td>
             </div>
             <td>
-                <div align="center"><a href="book.php"><p><?php echo $result["bookname"]; ?></p></a>
+                <div align="center"><a href="book.php"><p><?php echo $result["bookName"]; ?></p></a>
             </td>
             </div>
             <td>
                 <div align="center"><?php echo $result["category"]; ?>
+            </td>
+            </div>
+            <td>
+                <div align="center"><?php echo $result["author"]; ?>
             </td>
             </div>
 

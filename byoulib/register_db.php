@@ -9,6 +9,9 @@ if (isset($_POST['reg_user'])) {
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $password_1 = mysqli_real_escape_string($conn, $_POST['password_1']);
     $password_2 = mysqli_real_escape_string($conn, $_POST['password_2']);
+    $fullname = mysqli_real_escape_string($conn, $_POST['fullname']);
+    $citizenId = mysqli_real_escape_string($conn, $_POST['citizenId']);
+    $phone = mysqli_real_escape_string($conn, $_POST['phone']);
 
     if (empty($username)) {
         array_push($errors, "Username is required");
@@ -28,7 +31,7 @@ if (isset($_POST['reg_user'])) {
     }
 
 
-    $user_check_query = "SELECT * FROM account WHERE username = '$username' OR email = '$email' LIMIT 1";
+    $user_check_query = "SELECT * FROM member WHERE username = '$username' OR email = '$email' LIMIT 1";
     $query = mysqli_query($conn, $user_check_query);
     $result = mysqli_fetch_assoc($query);
 
@@ -40,18 +43,18 @@ if (isset($_POST['reg_user'])) {
             array_push($errors, "Email already exists");
         }
     }
-    $count_my_page = ("memberid.txt");
-    $hits = file($count_my_page);
-    $hits[0]++;
-    $fp = fopen($count_my_page, "w");
-    fputs($fp, "$hits[0]");
-    fclose($fp);
-    $memberid = $hits[0];
+    // $count_my_page = ("memberid.txt");
+    // $hits = file($count_my_page);
+    // $hits[0]++;
+    // $fp = fopen($count_my_page, "w");
+    // fputs($fp, "$hits[0]");
+    // fclose($fp);
+    // $memberId = $hits[0];
     
     if (count($errors) == 0) {
         $password = md5($password_1);
 
-        $sql = "INSERT INTO account (username, email, password, memberid) VALUES ('$username', '$email', '$password', '$memberid')";
+        $sql = "INSERT INTO member (userName, email, password, fullName, citizenID, phone) VALUES ('$username', '$email', '$password', '$fullname', '$citizenId', '$phone')";
         mysqli_query($conn, $sql);
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";

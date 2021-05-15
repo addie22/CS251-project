@@ -42,6 +42,18 @@ include('server.php');
             <input type="email" name="email" required>
         </div>
         <div class="input-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" name="fullname" required>
+        </div>
+        <div class="input-group">
+            <label for="citizenId">Citizen ID</label>
+            <input type="text" name="citizenId" required>
+        </div>
+        <div class="input-group">
+            <label for="phone">Phone Nmber</label>
+            <input type="text" name="phone" required>
+        </div>
+        <div class="input-group">
             <label for="password_1">Password</label>
             <input type="password" name="password_1" required>
         </div>
