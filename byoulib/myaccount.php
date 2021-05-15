@@ -1,4 +1,5 @@
 <?php
+include('server.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -32,26 +33,60 @@ if (!isset($_SESSION['username'])) {
                     <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
-                <?php else: ?>
+                <?php else : ?>
                     <li>
                         <p><a href="login.php" style="color: green;">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
         </div>
-    <div class="content">
-        <!--  notification message -->
-        <?php if (isset($_SESSION['success'])) : ?>
-            <div class="success">
-                <h3>
-                    <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                    ?>
-                </h3>
+        <div class="header">
+            <!--  notification message -->
+            <?php if (isset($_SESSION['success'])) : ?>
+                <div class="success">
+                    <h3>
+                        <?php
+                        echo $_SESSION['success'];
+                        unset($_SESSION['success']);
+                        ?>
+                    </h3>
+                </div>
+            <?php endif ?>
+        </div>
+        <div class="content">
+            <div class="row">
+
+                <div class="col-md-9 col-md-offset-1">
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            My Profile
+                        </div>
+                        <div class="panel-body">
+                            <form name="signup" method="post">
+                                <?php
+                                $username = $_SESSION['username'];
+                                $sql = "SELECT username,email,memberid FROM account WHERE username = $username";
+                                $query = mysqli_query($conn, $sql);
+                            
+                                
+                                ?>
+
+                                <div class="form-group">
+                                    <label>Memberid ID : </label>
+                                    <?php echo $query['memberid']; ?>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>User Name : </label>
+                                    <?php echo $query['username']; ?>
+                                </div>
+                                <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        <?php endif ?>
-    </div>
+        </div>
 </body>
 
 </html>
