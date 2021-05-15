@@ -32,39 +32,39 @@ if (isset($_POST['search'])) {
         </th>
 
     </tr>
-    <?php
-    while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
-    ?>
-        <tr>
-            <td>
-                <div align="center"><?php echo $result["bookCover"]; ?></div>
-            </td>
-            <td>
-                <div align="center"><?php echo $result["bookID"]; ?>
-            </td>
-            </div>
-            <td>
-                <div align="center"><a href="book.php"><p><?php echo $result["bookName"]; ?></p></a>
-            </td>
-            </div>
-            <td>
-                <div align="center"><?php echo $result["category"]; ?>
-            </td>
-            </div>
-            <td>
-                <div align="center"><?php echo $result["author"]; ?>
-            </td>
-            </div>
+        <?php
+        while ($result = mysqli_fetch_array($query, MYSQLI_ASSOC)) {
+        ?>
+            <tr>
+                <td>
+                    <div align="center"><?php echo $result["bookCover"]; ?></div>
+                </td>
+                <td>
+                    <div align="center"><?php echo $result["bookID"]; ?>
+                </td>
+                </div>
+                <td>
+                    <div align="center"><a href="book.php">
+                            <p><?php echo $result["bookName"]; ?></p>
+                        </a>
+                </td>
+                </div>
+                <td>
+                    <div align="center"><?php echo $result["category"]; ?>
+                </td>
+                </div>
+                <td>
+                    <div align="center"><?php echo $result["author"]; ?>
+                </td>
+                </div>
 
-        </tr>
-    <?php
-    }
-    ?>
+            </tr>
+        <?php
+        $_SESSION['bookname'] = $result['bookName'];
+        }
+        ?>
 </table>
 
-<?php
-mysqli_close($conn);
-?>
 </body>
 
 </html>

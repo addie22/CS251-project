@@ -64,23 +64,31 @@ if (!isset($_SESSION['username'])) {
                         <div class="panel-body">
                             <form name="signup" method="post">
                                 <?php
-                                $username = $_SESSION['username'];
-                                $sql = "SELECT username,email,memberid FROM account WHERE username = $username";
-                                $query = mysqli_query($conn, $sql);
-                            
-                                
+                                if (isset($_SESSION['username'])) {
+                                    $username = $_SESSION['username'];
+
+                                    $query = "SELECT * FROM member WHERE userName = '$username'";
+                                    $userquery = mysqli_query($conn, $query);
+
+                                    while ($result = mysqli_fetch_array($userquery, MYSQLI_ASSOC)) {
+                                        $memberId = $result['memberID'];
+                                        $username = $result['userName'];
+                                        $fullname = $result['fullName'];
+                                        $email = $result['email'];
+                                        $phone = $result['phone'];
+                                    }
+                                }
                                 ?>
+                                <table>
+                                    <tr><td>Member ID :<?php echo $memberId ;?></td></tr>
+                                    <tr><td>UserName :<?php echo $username ;?></td></tr>
+                                    <tr><td>Full Name :<?php echo $fullname ;?></td></tr>
+                                    <tr><td>Email :<?php echo $email ;?></td></tr>
+                                    <tr><td>Phone :<?php echo $phone ;?></td></tr>
 
-                                <div class="form-group">
-                                    <label>Memberid ID : </label>
-                                    <?php echo $query['memberid']; ?>
-                                </div>
+                                </table>
 
-                                <div class="form-group">
-                                    <label>User Name : </label>
-                                    <?php echo htmlentities($_SESSION['username']); ?>
-                                </div>
-                                <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button>
+                                <!-- <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button> -->
                             </form>
                         </div>
                     </div>

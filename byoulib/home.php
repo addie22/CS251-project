@@ -24,10 +24,6 @@ if (isset($_GET['logout'])) {
 </head>
 
 <body>
-    <div class="haeder">
-        <h4>Home Page</h4>
-    </div>
-
     <div class="nav">
         <div class="left-group">
             <ul>
