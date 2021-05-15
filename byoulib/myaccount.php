@@ -78,7 +78,7 @@ if (!isset($_SESSION['username'])) {
 
                                 <div class="form-group">
                                     <label>User Name : </label>
-                                    <?php echo $query['username']; ?>
+                                    <?php echo htmlentities($_SESSION['username']); ?>
                                 </div>
                                 <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button>
                             </form>

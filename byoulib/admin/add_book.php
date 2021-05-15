@@ -1,6 +1,10 @@
 <?php
-session_start();
 include('adminserver.php');
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('location: manage_book.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +35,12 @@ include('adminserver.php');
         </div>
         <div class="input-group">
             <label for="category">Category</label>
-            <input type="text" name="category">
+            <select name="category" id="category">
+                <option value="art & music">Art & Music</option>
+                <option value="education">Education</option>
+                <option value="history">History</option>
+                <option value="fiction">Fiction</option>
+            </select>
         </div>
         <div class="input-group">
             <label for="price">Price</label>

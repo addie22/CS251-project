@@ -35,19 +35,19 @@ include('server.php');
         <?php include('errors.php');?>
         <div class="input-group">
             <label for="username">Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" required>
         </div>
         <div class="input-group">
             <label for="email">Email</label>
-            <input type="email" name="email">
+            <input type="email" name="email" required>
         </div>
         <div class="input-group">
             <label for="password_1">Password</label>
-            <input type="password" name="password_1">
+            <input type="password" name="password_1" required>
         </div>
         <div class="input-group">
             <label for="password_2">Confirm Password</label>
-            <input type="password" name="password_2">
+            <input type="password" name="password_2" required>
         </div>
         <div class="input-group">
             <button type="submit" name="reg_user" class="btn">Register</button>

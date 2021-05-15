@@ -17,7 +17,7 @@ include('adminserver.php');
 <body>
 
     <div class="header">
-        <h2>Login</h2>
+        <h2>Login Admin</h2>
     </div>
 
     <form action="login_db.php" method="post">

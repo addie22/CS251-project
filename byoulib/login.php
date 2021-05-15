@@ -35,11 +35,11 @@ include('server.php');
 
         <div class="input-group">
             <label for="username">Username</label>
-            <input type="text" name="username">
+            <input type="text" name="username" required>
         </div>
         <div class="input-group">
             <label for="password">Password</label>
-            <input type="password" name="password">
+            <input type="password" name="password" required>
         </div>
         <div class="input-group">
             <button type="submit" name="login_user" class="btn">Login</button>
