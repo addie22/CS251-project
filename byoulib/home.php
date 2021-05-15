@@ -51,14 +51,10 @@ if (isset($_GET['logout'])) {
     </div>
     <div class="input-group">
         <form name="frmSearch" method="post" action="search.php">
-            <table width="599" border="1">
-                <tr>
-                    <th>Keyword
-                        <input name="txtKeyword" type="text" id="txtKeyword">
-                        <input type="submit" name="search" value="Search">
-                    </th>
-                </tr>
-            </table>
+            Keyword
+            <input name="txtKeyword" type="text" id="txtKeyword">
+            <input type="submit" name="search" value="Search">
+
         </form>
     </div>
 

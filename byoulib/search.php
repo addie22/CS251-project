@@ -41,7 +41,7 @@ if (isset($_POST['search'])) {
             </td>
             </div>
             <td>
-                <div align="center"><?php echo $result["bookname"]; ?>
+                <div align="center"><a href="book.php"><p><?php echo $result["bookname"]; ?></p></a>
             </td>
             </div>
             <td>
