@@ -9,7 +9,7 @@ if (!isset($_SESSION['username'])) {
 if (isset($_POST['borrow_jump'])) {
 
     //want to get bookID by using session bookname
-    if($bookid = mysqli_escape_string($conn, $_SESSION['bookid'])){
+    $bookid = mysqli_escape_string($conn, $_SESSION['bookid']);
     $query1 = "SELECT bookID FROM book WHERE bookID = '$bookid'";//ตรงนี้ควรเป็น bookname แต่ยังทำไม่ได้
     $bookquery = mysqli_query($conn, $query1);
     $result1 = mysqli_fetch_array($bookquery);
@@ -23,7 +23,7 @@ if (isset($_POST['borrow_jump'])) {
     $memberId = $result2['memberID'];
     
     $query3 = "UPDATE book SET status = 'inactive' WHERE bookID = '$bookId'";
-    $updatebookquery = mysqli_query($conn, $query3);
+    if($updatebookquery = mysqli_query($conn, $query3)){
 
     $query4 = "INSERT INTO borrow (bookID, memberID) VALUES ('$bookId', '$memberId')";
     $borrowquery = mysqli_query($conn,$query4);

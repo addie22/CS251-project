@@ -37,14 +37,15 @@ session_start();
             </ul>
         </div>
     </div>
-    <div class="content">
-        <form method="post">
-            <a href="category_selected.php" name="page">Art & Music</a>
-            <a href="category_selected.php" name="biographies">Biographies</a>
-            <a href="category_selected.php">Education</a>
-            <a href="category_selected.php">History</a>
-            <a href="category_selected.php">Literature & Fiction</a>
-            <a href="category_selected.php">Bussiness</a>
+    <div class="content" style="  display: inline-flex;
+  flex-wrap: wrap;">
+        <form method="POST" action="category_selected.php">
+            <div><a href="category_selected.php?name=art&music">Art & Music</a></div>
+            <div><a href="category_selected.php?name=biographies">Biographies</a></div>
+            <div><a href="category_selected.php?name=education">Education</a></div>
+            <div><a href="category_selected.php?name=history">History</a></div>
+            <div><a href="category_selected.php?name=fiction">Fiction</a></div>
+            <div><a href="category_selected.php?name=bussiness">Bussiness</a></div>
         </form>
     </div>
 </body>

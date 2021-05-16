@@ -24,7 +24,17 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="">
 
 </head>
+<style>
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
 
+li {
+  display: inline;
+}
+</style>
 <body>
     <div class="nav">
         <div class="left-group">

@@ -115,7 +115,7 @@ if (isset($_POST['search'])) {
                     </td>
                     <td>
                         <div align="center"><?php echo $result["bookID"];
-                                            $_SESSION['bookid'] = 3; ?>
+                                            $_SESSION['bookid'] = 1; ?>
                     </td>
                     </div>
                     <td>
