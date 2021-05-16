@@ -1,9 +1,24 @@
 <?php
-include('server.php');
+include('adminserver.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header('location: login.php');
+    header('location: manage_book.php');
+}
+if(isset($_POST['update']))
+{    
+$sid=$_SESSION['stdid'];  
+$fname=$_POST['fullanme'];
+$mobileno=$_POST['mobileno'];
+
+$sql="update tblstudents set FullName=:fname,MobileNumber=:mobileno where StudentId=:sid";
+$query = $dbh->prepare($sql);
+$query->bindParam(':sid',$sid,PDO::PARAM_STR);
+$query->bindParam(':fname',$fname,PDO::PARAM_STR);
+$query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
+$query->execute();
+
+echo '<script>alert("Your profile has been updated")</script>';
 }
 ?>
 <!DOCTYPE html>
@@ -11,12 +26,17 @@ if (!isset($_SESSION['username'])) {
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account | Byoulib</title>
+    <title>Book management</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+    <div class="header">
+        <h2>Manage Book</h2>
+    </div>
     <div class="nav">
         <div class="left-group">
             <ul>
@@ -41,11 +61,8 @@ if (!isset($_SESSION['username'])) {
             <div class="row">
                 <div class="col-md-9 col-md-offset-1">
                     <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            My Profile
-                        </div>
                         <div class="panel-body">
-                            <form method="post">
+                            <form name="signup" method="post">
                                 <?php
                                 if (isset($_SESSION['username'])) {
                                     $username = mysqli_escape_string($conn, $_SESSION['username']);
