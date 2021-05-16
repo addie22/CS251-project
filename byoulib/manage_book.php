@@ -34,7 +34,7 @@ if (isset($_GET['logout'])) {
                     </li>
                 <?php endif ?>
             <h4><a href="add_book.php">Add Book</a></h4>
-            <h4><a href="book_manage.php">Add Suggestion</a></h4>
+            <h4><a href="book_manage1.php">Book management</a></h4>
 
         </div>
     </div>

@@ -27,15 +27,15 @@ if (!isset($_SESSION['username'])) {
     <form action="add_book_db.php" method="post" enctype="multipart/form-data">
         <div class="input-group">
             <label for="bookname">Book Name</label>
-            <input type="text" name="bookname">
+            <input type="text" name="bookname" required>
         </div>
         <div class="input-group">
             <label for="isbn">ISBN</label>
-            <input type="text" name="isbn">
+            <input type="text" name="isbn" required>
         </div>
         <div class="input-group">
             <label for="author">Author</label>
-            <input type="text" name="author">
+            <input type="text" name="author" required>
         </div>
         <div class="input-group">
             <label for="category">Category</label>
@@ -49,7 +49,7 @@ if (!isset($_SESSION['username'])) {
         </div>
         <div class="input-group">
             <label for="price">Price</label>
-            <input type="text" name="price">
+            <input type="text" name="price" required>
         </div>
         <div class="input-group">
             <label for="status">Status</label>
@@ -58,6 +58,10 @@ if (!isset($_SESSION['username'])) {
                 <option value="inactive">Inactive</option>
             </select>
         </div>
+        <div class="input-group">
+                    <label for="descrip">Description</label>
+                    <input type="text" name="descrip">
+                </div>
         <div>
             <label for="img">Select Book Cover:</label>
             <input type="hidden" name="size" value="1000000">

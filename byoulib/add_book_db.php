@@ -11,6 +11,7 @@ if (isset($_POST['upload_book'])) {
     $category = mysqli_real_escape_string($conn, $_POST['category']);
     $price = mysqli_real_escape_string($conn, $_POST['price']);
     $status = mysqli_real_escape_string($conn, $_POST['status']);
+    $descrip = mysqli_real_escape_string($conn, $_POST['descrip']);
     $image = $_FILES['image']['name'];
 
     // image file directory
@@ -44,7 +45,7 @@ if (isset($_POST['upload_book'])) {
 
 if (count($errors) == 0) {
 
-    $sql = "INSERT INTO book (bookName, isbn, author, category, price, status, bookCover) VALUES ('$bookname', '$isbn','$author','$category', '$price','$status', '$image')";
+    $sql = "INSERT INTO book (bookName, isbn, author, category, price, status, descrip, bookCover) VALUES ('$bookname', '$isbn','$author','$category', '$price','$status', '$descrip', '$image')";
     mysqli_query($conn, $sql);
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {

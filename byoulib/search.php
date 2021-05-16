@@ -7,12 +7,6 @@ $strKeyword = null;
 if (isset($_POST["txtKeyword"])) {
     $strKeyword = $_POST["txtKeyword"];
 }
-
-if (isset($_POST['search'])) {
-    $query = "SELECT * FROM book WHERE bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
-    $searchquery = mysqli_query($conn, $query);
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +65,7 @@ if (isset($_POST['search'])) {
         </div>
     </div>
     <div class="input-group">
-        <form class="search" name="frmSearch" method="post" action="search.php" style="margin:auto;max-width:500px">
+        <form class="search" method="post" action="search.php" style="margin:auto;max-width:500px">
             <input name="txtKeyword" type="text" id="txtKeyword" placeholder="Book name, ISBN, Author..."><br>
             <input type="submit" name="search" value="Search">
         </form>
@@ -81,9 +75,6 @@ if (isset($_POST['search'])) {
         <tr>
             <th width="200">
                 <div align="center">Book Cover</div>
-            </th>
-            <th width="91">
-                <div align="center">Book ID</div>
             </th>
             <th width="500">
                 <div align="center">Book name</div>
@@ -100,6 +91,12 @@ if (isset($_POST['search'])) {
         </tr>
         <form method="post" action="book.php">
             <?php
+
+            if (isset($_POST['search'])) {
+                $query = "SELECT * FROM book WHERE bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
+                $searchquery = mysqli_query($conn, $query);
+            }
+
             while ($result = mysqli_fetch_array($searchquery)) {
             ?>
                 <tr>
@@ -108,9 +105,6 @@ if (isset($_POST['search'])) {
                                             echo "<div id='img_div'>";
                                             echo "<img src='images/" . $result['bookCover'] . "' >";
                                             echo "</div>"; ?><div>
-                    </td>
-                    <td>
-                        <div align="center"><?php echo $result["bookID"]; ?></a></div>
                     </td>
                     <td>
                         <div align="center"><a href="book.php?id=<?php echo $result['bookID']; ?>"><?php echo $result["bookName"]; ?></a></div>
