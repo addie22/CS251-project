@@ -77,9 +77,9 @@ if (isset($_POST['search'])) {
         </form>
     </div>
     <br>
-    <table width="1080" border="1" align="center">
+    <table width="1200" border="1" align="center">
         <tr>
-            <th width="400">
+            <th width="200">
                 <div align="center">Book Cover</div>
             </th>
             <th width="91">
@@ -97,12 +97,8 @@ if (isset($_POST['search'])) {
             <th width="198">
                 <div align="center">Status</div>
             </th>
-            <th width="98">
-                <div align="center">Borrow</div>
-            </th>
-
         </tr>
-        <form method="post" action="borrow.php">
+        <form method="post" action="book.php">
             <?php
             while ($result = mysqli_fetch_array($searchquery)) {
             ?>
@@ -114,36 +110,20 @@ if (isset($_POST['search'])) {
                                             echo "</div>"; ?><div>
                     </td>
                     <td>
-                        <div align="center"><?php echo $result["bookID"];
-                                            $_SESSION['bookid'] = 1; ?>
+                        <div align="center"><?php echo $result["bookID"]; ?></a></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center">
-                            </p><?php echo $result["bookName"]; ?>
+                        <div align="center"><a href="book.php?id=<?php echo $result['bookID']; ?>"><?php echo $result["bookName"]; ?></a></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center"><?php echo $result["category"]; ?>
+                        <div align="center"><?php echo $result["category"]; ?></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center"><?php echo $result["author"]; ?>
+                        <div align="center"><?php echo $result["author"]; ?></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center"><?php echo $result["status"]; ?>
+                        <div align="center"><?php echo $result["status"]; ?></div>
                     </td>
-                    </div>
-                    <td>
-                        <?php if ($result['status'] == 'active') : ?>
-                            <div align="center"><button name="borrow_jump">Borrow</button>
-                            <?php else : ?>
-                                <div align="center">
-                                    <p>Cannot Borrow</p>
-                                <?php endif ?>
-                    </td>
-                    </div>
                 </tr>
             <?php
             }
