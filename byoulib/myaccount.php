@@ -65,29 +65,24 @@ if (!isset($_SESSION['username'])) {
                             <form name="signup" method="post">
                                 <?php
                                 if (isset($_SESSION['username'])) {
-                                    $username = $_SESSION['username'];
-
+                                    $username = mysqli_escape_string($conn,$_SESSION['username']);
                                     $query = "SELECT * FROM member WHERE userName = '$username'";
                                     $userquery = mysqli_query($conn, $query);
 
-                                    while ($result = mysqli_fetch_array($userquery, MYSQLI_ASSOC)) {
-                                        $memberId = $result['memberID'];
-                                        $username = $result['userName'];
-                                        $fullname = $result['fullName'];
-                                        $email = $result['email'];
-                                        $phone = $result['phone'];
-                                    }
-                                }
+                                    $result = mysqli_fetch_array($userquery);
+                                }?>
+
+                                <?php echo "Member ID :" . $result['memberID'];?><br>
+                                <?php echo "Username :" . $result['userName'];?><br>
+                                <?php echo "Full name :" . $result['fullName'];?><br>
+                                <?php echo "Email :" . $result['email'];?><br>
+                                <?php echo "Phone number :" . $result['phone'];?><br>
+                                
+                                <?php
+                                    mysqli_close($conn);
                                 ?>
-                                <table>
-                                    <tr><td>Member ID :<?php echo $memberId ;?></td></tr>
-                                    <tr><td>UserName :<?php echo $username ;?></td></tr>
-                                    <tr><td>Full Name :<?php echo $fullname ;?></td></tr>
-                                    <tr><td>Email :<?php echo $email ;?></td></tr>
-                                    <tr><td>Phone :<?php echo $phone ;?></td></tr>
-
-                                </table>
-
+                                
+                            
                                 <!-- <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button> -->
                             </form>
                         </div>

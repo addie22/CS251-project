@@ -20,7 +20,7 @@ include('adminserver.php');
         <h2>Login Admin</h2>
     </div>
 
-    <form action="login_db.php" method="post">
+    <form action="loginadmin_db.php" method="post">
         <!--  notification message -->
         <?php if (isset($_SESSION['error'])) : ?>
             <div class="error">

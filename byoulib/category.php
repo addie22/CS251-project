@@ -16,6 +16,27 @@ session_start();
     <div class="header">
         <h4>Category</h4>
     </div>
+    <div class="nav">
+        <div class="left-group">
+            <ul>
+                <li><a href="home.php">Home</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+        <div class="right-group">
+            <ul>
+                <?php if (isset($_SESSION['username'])) : ?>
+                    <li>
+                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                    </li>
+                <?php else : ?>
+                    <li>
+                        <p><a href="login.php" style="color: green;">Login</a></p>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </div>
+    </div>
     <div class="content">
         <form method="post">
             <a href="category_selected.php" name="page">Art & Music</a>

@@ -41,7 +41,6 @@ if (isset($_POST['upload_book'])) {
         $_SESSION['error'] = "status is required";
     }
 }
-$result = mysqli_query($db, "SELECT * FROM book");
 
 if (count($errors) == 0) {
 
@@ -53,6 +52,8 @@ if (count($errors) == 0) {
     } else {
         $msg = "Failed to upload image";
     }
+    $result = mysqli_query($conn, "SELECT * FROM book");
+
     $_SESSION['success'] = "Upload success";
     header('location: manage_book.php');
 } else {

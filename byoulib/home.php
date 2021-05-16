@@ -21,6 +21,8 @@ if (isset($_GET['logout'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Byoulib</title>
+    <link rel="stylesheet" href="">
+
 </head>
 
 <body>
@@ -33,7 +35,7 @@ if (isset($_GET['logout'])) {
         </div>
         <div class="right-group">
             <ul>
-            <li><p><a href="admin/login.php">Login Admin</a></p></li>
+            <li><p><a href="loginadmin.php">Login Admin</a></p></li>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>

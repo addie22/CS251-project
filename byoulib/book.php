@@ -5,7 +5,7 @@
     if (isset($_GET['bookname'])) {
         $bookname = $_GET['bookname'];
         $query = "SELECT * FROM book WHERE bookName ='$bookname'";
-        $bookquery = mysqli_query($conn, $sql);
+        $bookquery = mysqli_query($conn, $query);
 
         while ($result = mysqli_fetch_array($userquery, MYSQLI_ASSOC)) {
             $bookname = $result['bookName'];
