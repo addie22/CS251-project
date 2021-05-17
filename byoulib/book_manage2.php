@@ -12,7 +12,7 @@ if (isset($_POST['update_book'])) {
     $status = mysqli_real_escape_string($conn, $_POST['status']);
     $descrip = mysqli_real_escape_string($conn, $_POST['descrip']);
     $suggestion = mysqli_real_escape_string($conn, $_POST['suggestion']);
-    $bookid = mysqli_escape_string($conn,$_SESSION['bookid']);
+    $bookid = mysqli_escape_string($conn, $_SESSION['bookid']);
 
     $query = "UPDATE book SET status = '$status', descrip = '$descrip', suggestion = '$suggestion' WHERE bookID ='$bookid'";
     $updatebookquery = mysqli_query($conn, $query);
@@ -27,20 +27,65 @@ if (isset($_POST['update_book'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book management</title>
-
-    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
 
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+</style>
 <body>
-
-    <div class="header">
-        <h2>Manage Book</h2>
-    </div>
     <div class="nav">
         <div class="left-group">
             <ul>
                 <li><a href="manage_book.php">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="manage_book.php">Management</a></li>
             </ul>
         </div>
         <div class="right-group">
@@ -51,10 +96,14 @@ if (isset($_POST['update_book'])) {
                     </li>
                 <?php else : ?>
                     <li>
-                        <p><a href="login.php" style="color: green;">Login</a></p>
+                        <p><a href="login.php">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
+        </div>
+    </div>
+        <div class="header">
+            <h2>Manage Book</h2>
         </div>
         <div class="content">
             <?php if (isset($_GET['id'])) {
@@ -73,7 +122,7 @@ if (isset($_POST['update_book'])) {
                 </div>
 
                 <div><label>Book name : </label><?php echo $result["bookName"]; ?></div>
-                
+
                 <div><label>Author : </label><?php echo $result["author"]; ?></div>
 
                 <div><label>Category : </label><?php echo $result["category"]; ?></div>

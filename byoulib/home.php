@@ -21,20 +21,92 @@ if (isset($_GET['logout'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Byoulib</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 <style>
-    ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
 
-li {
-  display: inline;
-}
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+
+    form.search input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+
+    form.search button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #2196F3;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+
+    form.search button:hover {
+        background: #0b7dda;
+    }
+
+    form.search::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
 </style>
+
 <body>
     <div class="nav">
         <div class="left-group">
@@ -45,40 +117,41 @@ li {
         </div>
         <div class="right-group">
             <ul>
-            <li><p><a href="loginadmin.php">Login Admin</a></p></li>
+                <li>
+                    <p><a href="loginadmin.php">Login Admin</a></p>
+                </li>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>
-                        <p><a href="login.php" style="color: green;">Login</a></p>
+                        <p><a href="login.php">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
         </div>
     </div>
     <div class="input-group">
-        <form name="frmSearch" method="post" action="search.php">
-            Keyword
-            <input name="txtKeyword" type="text" id="txtKeyword">
-            <input type="submit" name="search" value="Search">
-
+        <form class="search" method="post" action="search.php" style="margin:auto;max-width:500px">
+            <input name="txtKeyword" type="text" id="txtKeyword" placeholder="Book name, ISBN, Author...">
+            <button type="submit" name="search"><i class="fa fa-search"></i></button>
         </form>
     </div>
-
-    <div class="link-group">
-        <div class="category">
-            <h4><a href="category.php">Category</a></h4>
-        </div>
-        <div class="suggestion">
-            <h4><a href="suggestion.php">Suggestion Book</a></h4>
-        </div>
-        <div class="renew">
-            <h4><a href="renew.php">Renew</a></h4>
-        </div>
-        <div class="myaccount">
-            <h4><a href="myaccount.php">My Account</a></h4>
+    <div class="content">
+        <div class="link-group">
+            <div class="category">
+                <h4><a href="category.php">Category</a></h4>
+            </div>
+            <div class="suggestion">
+                <h4><a href="suggestion.php">Suggestion Book</a></h4>
+            </div>
+            <div class="renew">
+                <h4><a href="renew.php">Renew</a></h4>
+            </div>
+            <div class="myaccount">
+                <h4><a href="myaccount.php">My Account</a></h4>
+            </div>
         </div>
     </div>
 </body>

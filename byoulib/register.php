@@ -10,16 +10,59 @@ include('server.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register Page</title>
-
-    <link rel="stylesheet" href="style.css">
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
 
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+</style>
 <body>
-
-    <div class="header">
-        <h2>Register</h2>
-    </div>
-
     <form action="register_db.php" method="post">
         <!--  notification message -->
         <?php if (isset($_SESSION['error'])) : ?>
@@ -32,7 +75,31 @@ include('server.php');
                 </h3>
             </div>
         <?php endif ?>
-        <?php include('errors.php');?>
+        <?php include('errors.php'); ?>
+        <div class="nav">
+            <div class="left-group">
+                <ul>
+                    <li><a href="home.php">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="right-group">
+                <ul>
+                    <?php if (isset($_SESSION['username'])) : ?>
+                        <li>
+                            <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        </li>
+                    <?php else : ?>
+                        <li>
+                            <p><a href="login.php">Login</a></p>
+                        </li>
+                    <?php endif ?>
+                </ul>
+            </div>
+        </div>
+        <div class="header">
+            <h2>Register</h2>
+        </div>
         <div class="input-group">
             <label for="username">Username</label>
             <input type="text" name="username" required>

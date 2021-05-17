@@ -2,42 +2,95 @@
 include('server.php');
 session_start();
 
-if(isset($_GET['name'])){
-    $categoryname = mysqli_escape_string($conn,$_GET['name']);
+if (isset($_GET['name'])) {
+    $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
-}elseif(isset($_POST['name'])){
-    $categoryname = mysqli_escape_string($conn,$_GET['name']);
+} elseif (isset($_POST['name'])) {
+    $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
-}elseif(isset($_GET['name'])){
-    $categoryname = mysqli_escape_string($conn,$_GET['name']);
+} elseif (isset($_GET['name'])) {
+    $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
-}elseif(isset($_GET['name'])){
-    $categoryname = mysqli_escape_string($conn,$_GET['name']);
+} elseif (isset($_GET['name'])) {
+    $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
-}elseif(isset($_GET['name'])){
-    $categoryname = mysqli_escape_string($conn,$_GET['name']);
+} elseif (isset($_GET['name'])) {
+    $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
-}elseif(isset($_GET['name'])){
-    $categoryname = mysqli_escape_string($conn,$_GET['name']);
+} elseif (isset($_GET['name'])) {
+    $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category | Byoulib</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
+
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+</style>
+
 <body>
-<div class="nav" style="display: flex;">
+    <div class="nav" style="display: flex;">
         <div class="left-group" style=" display:flex">
             <ul>
                 <li><a href="home.php">Home</a></li>
@@ -52,19 +105,16 @@ if(isset($_GET['name'])){
                     </li>
                 <?php else : ?>
                     <li>
-                        <p><a href="login.php" style="color: green;">Login</a></p>
+                        <p><a href="login.php">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
         </div>
     </div>
-    <table width="1080" border="1" align="center">
+    <table width="1200" border="1" align="center">
         <tr>
-            <th width="400">
+            <th width="200">
                 <div align="center">Book Cover</div>
-            </th>
-            <th width="91">
-                <div align="center">Book ID</div>
             </th>
             <th width="500">
                 <div align="center">Book name</div>
@@ -78,13 +128,15 @@ if(isset($_GET['name'])){
             <th width="198">
                 <div align="center">Status</div>
             </th>
-            <th width="98">
-                <div align="center">Borrow</div>
-            </th>
-
         </tr>
-        <form method="post" action="borrow.php">
+        <form method="post" action="book.php">
             <?php
+
+            if (isset($_POST['search'])) {
+                $query = "SELECT * FROM book WHERE bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
+                $searchquery = mysqli_query($conn, $query);
+            }
+
             while ($result = mysqli_fetch_array($searchquery)) {
             ?>
                 <tr>
@@ -95,36 +147,17 @@ if(isset($_GET['name'])){
                                             echo "</div>"; ?><div>
                     </td>
                     <td>
-                        <div align="center"><?php echo $result["bookID"];
-                                            $_SESSION['bookid'] = 1; ?>
+                        <div align="center"><a href="book.php?id=<?php echo $result['bookID']; ?>"><?php echo $result["bookName"]; ?></a></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center">
-                            </p><?php echo $result["bookName"]; ?>
+                        <div align="center"><?php echo $result["category"]; ?></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center"><?php echo $result["category"]; ?>
+                        <div align="center"><?php echo $result["author"]; ?></div>
                     </td>
-                    </div>
                     <td>
-                        <div align="center"><?php echo $result["author"]; ?>
+                        <div align="center"><?php echo $result["status"]; ?></div>
                     </td>
-                    </div>
-                    <td>
-                        <div align="center"><?php echo $result["status"]; ?>
-                    </td>
-                    </div>
-                    <td>
-                        <?php if ($result['status'] == 'active') : ?>
-                            <div align="center"><button name="borrow_jump">Borrow</button>
-                            <?php else : ?>
-                                <div align="center">
-                                    <p>Cannot Borrow</p>
-                                <?php endif ?>
-                    </td>
-                    </div>
                 </tr>
             <?php
             }
@@ -132,4 +165,5 @@ if(isset($_GET['name'])){
         </form>
     </table>
 </body>
+
 </html>

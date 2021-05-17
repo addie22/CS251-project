@@ -14,11 +14,59 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Renew | Byoulib</title>
 </head>
+<style>
+* {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
+
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+</style>
 
 <body>
-    <div class="haeder">
-        <h4>Renew</h4>
-    </div>
     <div class="nav">
         <div class="left-group">
             <ul>
@@ -32,26 +80,18 @@ if (!isset($_SESSION['username'])) {
                     <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
-                <?php else: ?>
+                <?php else : ?>
                     <li>
-                        <p><a href="login.php" style="color: green;">Login</a></p>
+                        <p><a href="login.php">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
         </div>
-    <div class="content">
-        <!--  notification message -->
-        <?php if (isset($_SESSION['success'])) : ?>
-            <div class="success">
-                <h3>
-                    <?php
-                    echo $_SESSION['success'];
-                    unset($_SESSION['success']);
-                    ?>
-                </h3>
-            </div>
-        <?php endif ?>
     </div>
+    <div class="header">
+        <h4>Renwe page</h4>
+    </div>
+
 </body>
 
 </html>

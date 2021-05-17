@@ -15,6 +15,57 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account | Byoulib</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
+
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+</style>
 
 <body>
     <div class="nav">
@@ -32,47 +83,38 @@ if (!isset($_SESSION['username'])) {
                     </li>
                 <?php else : ?>
                     <li>
-                        <p><a href="login.php" style="color: green;">Login</a></p>
+                        <p><a href="login.php">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
         </div>
-        <div class="content">
-            <div class="row">
-                <div class="col-md-9 col-md-offset-1">
-                    <div class="panel panel-danger">
-                        <div class="panel-heading">
-                            My Profile
-                        </div>
-                        <div class="panel-body">
-                            <form method="post">
-                                <?php
-                                if (isset($_SESSION['username'])) {
-                                    $username = mysqli_escape_string($conn, $_SESSION['username']);
-                                    $query = "SELECT * FROM member WHERE userName = '$username'";
-                                    $userquery = mysqli_query($conn, $query);
-
-                                    $result = mysqli_fetch_array($userquery);
-                                } ?>
-
-                                <?php echo "Member ID :" . $result['memberID']; ?><br>
-                                <?php echo "Username :" . $result['userName']; ?><br>
-                                <?php echo "Full name :" . $result['fullName']; ?><br>
-                                <?php echo "Email :" . $result['email']; ?><br>
-                                <?php echo "Phone number :" . $result['phone']; ?><br>
-
-                                <?php
-                                mysqli_close($conn);
-                                ?>
-
-
-                                <!-- <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button> -->
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </div>
+    <div class="content">
+        <div class="heading">
+            My Profile
         </div>
+
+        <form method="post">
+            <?php
+            if (isset($_SESSION['username'])) {
+                $username = mysqli_escape_string($conn, $_SESSION['username']);
+                $query = "SELECT * FROM member WHERE userName = '$username'";
+                $userquery = mysqli_query($conn, $query);
+                $result = mysqli_fetch_array($userquery);
+            } ?>
+
+            <div><?php echo "Username : " . $result['userName']; ?></div>
+            <div><?php echo "Full name : " . $result['fullName']; ?></div>
+            <div><?php echo "Citizen ID : " . $result['citizenID']; ?></div>
+            <div><?php echo "Email : " . $result['email']; ?></div>
+            <div><?php echo "Phone number : " . $result['phone']; ?></div>
+
+            <?php
+            mysqli_close($conn);
+            ?>
+            <!-- <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button> -->
+        </form>
+    </div>
 </body>
 
 </html>

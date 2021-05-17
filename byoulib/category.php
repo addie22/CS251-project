@@ -11,11 +11,59 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Category | Byoulib</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Arial;
+    }
+
+    body {
+        background: #EFF0F3;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #1A3873;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+</style>
 
 <body>
-    <div class="header">
-        <h4>Category</h4>
-    </div>
     <div class="nav">
         <div class="left-group">
             <ul>
@@ -31,11 +79,14 @@ session_start();
                     </li>
                 <?php else : ?>
                     <li>
-                        <p><a href="login.php" style="color: green;">Login</a></p>
+                        <p><a href="login.php">Login</a></p>
                     </li>
                 <?php endif ?>
             </ul>
         </div>
+    </div>
+    <div class="header">
+        <h4>Category</h4>
     </div>
     <div class="content" style="  display: inline-flex;
   flex-wrap: wrap;">
