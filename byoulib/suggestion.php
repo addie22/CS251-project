@@ -26,7 +26,7 @@ session_start();
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #A0522D;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -88,7 +88,7 @@ session_start();
             </ul>
         </div>
     </div>
-    
+
     <div class="header">
         <h4>Suggestion</h4>
     </div>

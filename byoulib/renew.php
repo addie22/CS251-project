@@ -16,7 +16,7 @@ if (!isset($_SESSION['username'])) {
     <title>Renew | Byoulib</title>
 </head>
 <style>
-* {
+    * {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
@@ -30,7 +30,7 @@ if (!isset($_SESSION['username'])) {
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #A0522D;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -115,16 +115,16 @@ if (!isset($_SESSION['username'])) {
         </tr>
         <form method="post" action="renew_db.php">
 
-            <?php 
+            <?php
             $username = $_SESSION['username'];
             $query1 = "SELECT memberID FROM member WHERE userName = '$username'";
-            $userquery = mysqli_query($conn,$query1);
+            $userquery = mysqli_query($conn, $query1);
             $result1 = mysqli_fetch_array($userquery);
-            $userId = mysqli_escape_string($conn,$result1['memberID']);
+            $userId = mysqli_escape_string($conn, $result1['memberID']);
 
             $query2 = "SELECT * FROM book INNER JOIN borrow ON book.bookID = borrow.bookID WHERE borrow.memberID = '$userId'";
             $borrowandbook = mysqli_query($conn, $query2);
-            
+
 
             while ($result2 = mysqli_fetch_array($borrowandbook)) {
             ?>

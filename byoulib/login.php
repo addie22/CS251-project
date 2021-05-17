@@ -9,7 +9,7 @@ include('server.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Byoulib</title>
+    <title>Sign in | Byoulib</title>
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 </head>
 <style>
@@ -17,20 +17,39 @@ include('server.php');
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        color: white;
+        text-align: center;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://pbs.twimg.com/media/EWIJmy2U8AMTJqs?format=jpg&name=large');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size: 125%
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #A0522D;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    button {
+        background-color: #8B4513;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
     }
 
     .right-group ul {
@@ -62,6 +81,13 @@ include('server.php');
         color: #EFF0F3;
         padding: 30px 10px;
     }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+    }
 </style>
 
 <body>
@@ -76,9 +102,6 @@ include('server.php');
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p style="color: white;"><?php echo $_SESSION['username']; ?></p>
-                    </li>
-                    <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
@@ -90,7 +113,9 @@ include('server.php');
         </div>
     </div>
     <div class="header">
-        <h2>Sign in</h2>
+        <br>
+        <h1>Sign in</h1>
+        <br>
     </div>
     <!--  notification message -->
     <div><?php if (isset($_SESSION['error'])) : ?>
@@ -115,8 +140,10 @@ include('server.php');
             <input type="password" name="password" required>
         </div>
         <div class="input-group">
+            <br>
             <button type="submit" name="login_user" class="btn">Login</button>
         </div>
+        <br>
         <p>Not yet a member? <a href="register.php">Sign Up</a></p>
     </form>
     <div class="footer">

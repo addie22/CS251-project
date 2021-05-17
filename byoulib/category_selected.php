@@ -6,7 +6,7 @@ if (isset($_GET['name'])) {
     $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
-} elseif (isset($_POST['name'])) {
+} elseif (isset($_GET['name'])) {
     $categoryname = mysqli_escape_string($conn, $_GET['name']);
     $query = "SELECT * FROM book WHERE category = '$categoryname'";
     $searchquery = mysqli_query($conn, $query);
@@ -35,7 +35,7 @@ if (isset($_GET['name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category | Byoulib</title>
+    <title><?php echo $_GET['name'] ;?> | Byoulib</title>
 </head>
 <style>
     * {
@@ -52,7 +52,7 @@ if (isset($_GET['name'])) {
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #A0522D;        
         display: flex;
         flex-direction: row;
         justify-content: space-between;

@@ -16,17 +16,36 @@ include('server.php');
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        color: white;
+        text-align: center;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://images-ext-1.discordapp.net/external/bje5wo593mhBQYjj3ObKEL6x9jz_6NZotxs0y7NWFdg/https/pbs.twimg.com/media/EWIJDQ7U0AApu3E.jpg%3Alarge?width=1848&height=1040');
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-size: cover;
+        font-size: 125% 
+    }
+    
+    button {
+        background-color: #A0522D;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #A0522D;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -61,6 +80,14 @@ include('server.php');
         color: #EFF0F3;
         padding: 30px 10px;
     }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+    }
+
 </style>
 <body>
     <form action="register_db.php" method="post">
@@ -98,7 +125,7 @@ include('server.php');
             </div>
         </div>
         <div class="header">
-            <h2>Register</h2>
+            <br><h1>Register</h1><br>
         </div>
         <div class="input-group">
             <label for="username">Username</label>
@@ -129,9 +156,10 @@ include('server.php');
             <input type="password" name="password_2" required>
         </div>
         <div class="input-group">
+            <br>
             <button type="submit" name="reg_user" class="btn">Register</button>
         </div>
-        <p>Already a member? <a href="login.php">Sign in</a></p>
+        <br><p>Already a member? <a href="login.php">Sign in</a></p>
 
     </form>
     <div class="footer">
