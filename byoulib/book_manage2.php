@@ -17,7 +17,7 @@ if (isset($_POST['update_book'])) {
     $query = "UPDATE book SET status = '$status', descrip = '$descrip', suggestion = '$suggestion' WHERE bookID ='$bookid'";
     $updatebookquery = mysqli_query($conn, $query);
 
-    echo '<script>alert("Update book Completed");window.location.href="manage_book.php";</script>';
+    echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';
 }
 ?>
 <!DOCTYPE html>

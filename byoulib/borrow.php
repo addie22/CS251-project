@@ -25,7 +25,7 @@ if (isset($_POST['borrow_jump'])) {
     $query3 = "UPDATE book SET status = 'inactive' WHERE bookID = '$bookId'";
     if($updatebookquery = mysqli_query($conn, $query3)){
 
-    $query4 = "INSERT INTO borrow (bookID, memberID) VALUES ('$bookId', '$memberId')";
+    $query4 = "INSERT INTO borrow (bookID, memberID, returnDate) VALUES ('$bookId', '$memberId', NOW()+INTERVAL 15 DAY)";
     $borrowquery = mysqli_query($conn,$query4);
     echo '<script>alert("Borrowing Completed");window.location.href="home.php";</script>';
 

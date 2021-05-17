@@ -75,6 +75,9 @@ session_start();
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
+                        <p style="color: white;"><?php echo $_SESSION['username']; ?></p>
+                    </li>
+                    <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
