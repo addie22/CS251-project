@@ -115,7 +115,9 @@ include('adminserver.php');
             <button type="submit" name="login_admin" class="btn">Login</button>
         </div>
     </form>
-
+    <div class="footer">
+        <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
+    </div>
 </body>
 
 </html>

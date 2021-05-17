@@ -115,6 +115,9 @@ if (!isset($_SESSION['username'])) {
             <!-- <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button> -->
         </form>
     </div>
+    <div class="footer">
+        <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
+    </div>
 </body>
 
 </html>

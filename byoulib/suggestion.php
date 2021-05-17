@@ -139,6 +139,9 @@ session_start();
             ?>
         </form>
     </table>
+    <div class="footer">
+        <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
+    </div>
 </body>
 
 </html>
