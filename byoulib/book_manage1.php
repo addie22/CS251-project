@@ -151,6 +151,10 @@ if (isset($_POST["txtKeyword"])) {
                 <th width="198">
                     <div align="center">Status</div>
                 </th>
+                <th width="198">
+                    <div align="center">Suggestion</div>
+                </th>
+
             </tr>
             <form method="post" action="book.php">
                 <?php
@@ -179,6 +183,9 @@ if (isset($_POST["txtKeyword"])) {
                         </td>
                         <td>
                             <div align="center"><?php echo $result["status"]; ?></div>
+                        </td>
+                        <td>
+                            <div align="center"><?php echo $result["suggestion"]; ?></div>
                         </td>
                     </tr>
                 <?php

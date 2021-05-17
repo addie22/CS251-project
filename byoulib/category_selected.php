@@ -90,8 +90,8 @@ if (isset($_GET['name'])) {
 </style>
 
 <body>
-    <div class="nav" style="display: flex;">
-        <div class="left-group" style=" display:flex">
+    <div class="nav">
+        <div class="left-group">
             <ul>
                 <li><a href="home.php">Home</a></li>
                 <li><a href="#about">About</a></li>

@@ -85,9 +85,60 @@ session_start();
             </ul>
         </div>
     </div>
+    
     <div class="header">
         <h4>Suggestion</h4>
     </div>
+
+    <table width="1200" border="1" align="center">
+        <tr>
+            <th width="200">
+                <div align="center">Book Cover</div>
+            </th>
+            <th width="500">
+                <div align="center">Book name</div>
+            </th>
+            <th width="198">
+                <div align="center">Category</div>
+            </th>
+            <th width="198">
+                <div align="center">Author</div>
+            </th>
+            <th width="198">
+                <div align="center">Status</div>
+            </th>
+        </tr>
+        <form method="post" action="book.php">
+
+            <?php $query = "SELECT * FROM book WHERE suggestion = 'suggestion'";
+            $searchquery = mysqli_query($conn, $query);
+            while ($result = mysqli_fetch_array($searchquery)) {
+            ?>
+                <tr>
+                    <td>
+                        <div align="center"><?php
+                                            echo "<div id='img_div'>";
+                                            echo "<img src='images/" . $result['bookCover'] . "' >";
+                                            echo "</div>"; ?><div>
+                    </td>
+                    <td>
+                        <div align="center"><a href="book.php?id=<?php echo $result['bookID']; ?>"><?php echo $result["bookName"]; ?></a></div>
+                    </td>
+                    <td>
+                        <div align="center"><?php echo $result["category"]; ?></div>
+                    </td>
+                    <td>
+                        <div align="center"><?php echo $result["author"]; ?></div>
+                    </td>
+                    <td>
+                        <div align="center"><?php echo $result["status"]; ?></div>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </form>
+    </table>
 </body>
 
 </html>
