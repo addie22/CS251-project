@@ -99,6 +99,9 @@ session_start();
             <div><a href="category_selected.php?name=bussiness">Bussiness</a></div>
         </form>
     </div>
+    <div class="footer">
+        <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
+    </div>
 </body>
 
 </html>

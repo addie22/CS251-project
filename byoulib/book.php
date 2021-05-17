@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $result['bookName'];?> | Byoulib</title>
+    <title><?php echo $result['bookName']; ?> | Byoulib</title>
 </head>
 <style>
     * {
@@ -103,12 +103,13 @@ if (isset($_GET['id'])) {
                 echo "<img src='images/" . $result['bookCover'] . "' >";
                 echo "</div>"; ?><br>
         </div>
-        <div><?php echo "Book name :" . $result['bookName']; ?></div>
-        <div><?php echo "Author :" . $result['author']; ?></div>
-        <div><?php echo "Category :" . $result['category']; ?></div>
-        <div><?php echo "Price :" . $result['price']; ?></div>
-        <div><?php echo "Status :" . $result['status']; ?></div>
-        <div><?php echo "Description :" . $result['descrip']; ?></div>
+        <div><?php echo "Book name : " . $result['bookName']; ?></div>
+        <div><?php echo "Author : " . $result['author']; ?></div>
+        <div><?php echo "Category : " . $result['category']; ?></div>
+        <div><?php echo "ISBN : " . $result['isbn']; ?></div>
+        <div><?php echo "Price : " . $result['price']; ?></div>
+        <div><?php echo "Status : " . $result['status']; ?></div>
+        <div><?php echo "Description : " . $result['descrip']; ?></div>
 
         <div>
             <?php if ($result['status'] == 'active') : ?>
@@ -118,6 +119,9 @@ if (isset($_GET['id'])) {
             <?php endif ?>
         </div>
     </form>
+    <div class="footer">
+        <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
+    </div>
 </body>
 
 </html>

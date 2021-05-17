@@ -127,6 +127,8 @@ if (isset($_POST['update_book'])) {
 
                 <div><label>Category : </label><?php echo $result["category"]; ?></div>
 
+                <div><label>ISBN : </label><?php echo $result["isbn"]; ?></div>
+
                 <div class="input-group">
                     <label for="status">Status</label>
                     <select name="status" id="status">
