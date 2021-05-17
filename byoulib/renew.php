@@ -1,4 +1,5 @@
 <?php
+include('server.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
@@ -94,6 +95,64 @@ if (!isset($_SESSION['username'])) {
     <div class="header">
         <h4>Renwe page</h4>
     </div>
+    <table width="1200" border="1" align="center">
+        <tr>
+            <th width="200">
+                <div align="center">Book Cover</div>
+            </th>
+            <th width="500">
+                <div align="center">Book name</div>
+            </th>
+            <th width="198">
+                <div align="center">Borrow date</div>
+            </th>
+            <th width="198">
+                <div align="center">Return date</div>
+            </th>
+            <th width="198">
+                <div align="center">Renew</div>
+            </th>
+        </tr>
+        <form method="post" action="renew_db.php">
+
+            <?php 
+            $username = $_SESSION['username'];
+            $query1 = "SELECT memberID FROM member WHERE userName = '$username'";
+            $userquery = mysqli_query($conn,$query1);
+            $result1 = mysqli_fetch_array($userquery);
+            $userId = mysqli_escape_string($conn,$result1['memberID']);
+
+            $query2 = "SELECT * FROM book INNER JOIN borrow ON book.bookID = borrow.bookID WHERE borrow.memberID = '$userId'";
+            $borrowandbook = mysqli_query($conn, $query2);
+            
+
+            while ($result2 = mysqli_fetch_array($borrowandbook)) {
+            ?>
+                <tr>
+                    <td>
+                        <div align="center"><?php
+                                            echo "<div id='img_div'>";
+                                            echo "<img src='images/" . $result2['bookCover'] . "' >";
+                                            echo "</div>"; ?><div>
+                    </td>
+                    <td>
+                        <div align="center"><a href="book.php?id=<?php echo $result2['bookID']; ?>"><?php echo $result2["bookName"]; ?></a></div>
+                    </td>
+                    <td>
+                        <div align="center"><?php echo $result2["startDate"]; ?></div>
+                    </td>
+                    <td>
+                        <div align="center"><?php echo $result2["returnDate"]; ?></div>
+                    </td>
+                    <td>
+                        <div align="center"><a href="renew_db.php?id=<?php echo $result2['bookID']; ?>">Renew</a></div>
+                    </td>
+                </tr>
+            <?php
+            }
+            ?>
+        </form>
+    </table>
     <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
     </div>

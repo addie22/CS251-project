@@ -17,6 +17,13 @@ if (isset($_POST['update_book'])) {
     $query = "UPDATE book SET status = '$status', descrip = '$descrip', suggestion = '$suggestion' WHERE bookID ='$bookid'";
     $updatebookquery = mysqli_query($conn, $query);
 
+    $query2 = "SELECT bookID FROM book WHERE bookID = '$bookid' AND status = 'active'";
+    $bookquery2 = mysqli_query($conn, $query2);
+    $result2 = mysqli_fetch_assoc($bookquery2);
+    $bookidreturn = mysqli_escape_string($conn, $result2['bookID']);
+    $query3 = "UPDATE borrow SET status = 'returned' WHERE bookID = '$bookidreturn'";
+    $dropquery = mysqli_query($conn, $query3);
+
     echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';
 }
 ?>
@@ -79,6 +86,7 @@ if (isset($_POST['update_book'])) {
         padding: 30px 10px;
     }
 </style>
+
 <body>
     <div class="nav">
         <div class="left-group">
@@ -102,56 +110,56 @@ if (isset($_POST['update_book'])) {
             </ul>
         </div>
     </div>
-        <div class="header">
-            <h2>Manage Book</h2>
-        </div>
-        <div class="content">
-            <?php if (isset($_GET['id'])) {
-                $_SESSION['bookid'] = $_GET['id'];
-                $bookid = mysqli_escape_string($conn, $_GET['id']);
-                $query = "SELECT * FROM book WHERE bookID ='$bookid'";
-                $bookquery = mysqli_query($conn, $query);
-                $result = mysqli_fetch_array($bookquery);
-            }
-            ?>
-            <form action="book_manage2.php" method="POST">
+    <div class="header">
+        <h2>Manage Book</h2>
+    </div>
+    <div class="content">
+        <?php if (isset($_GET['id'])) {
+            $_SESSION['bookid'] = $_GET['id'];
+            $bookid = mysqli_escape_string($conn, $_GET['id']);
+            $query = "SELECT * FROM book WHERE bookID ='$bookid'";
+            $bookquery = mysqli_query($conn, $query);
+            $result = mysqli_fetch_array($bookquery);
+        }
+        ?>
+        <form action="book_manage2.php" method="POST">
 
-                <div><?php echo "<div id='img_div'>";
-                        echo "<img src='images/" . $result['bookCover'] . "' >";
-                        echo "</div>"; ?><br>
-                </div>
+            <div><?php echo "<div id='img_div'>";
+                    echo "<img src='images/" . $result['bookCover'] . "' >";
+                    echo "</div>"; ?><br>
+            </div>
 
-                <div><label>Book name : </label><?php echo $result["bookName"]; ?></div>
+            <div><label>Book name : </label><?php echo $result["bookName"]; ?></div>
 
-                <div><label>Author : </label><?php echo $result["author"]; ?></div>
+            <div><label>Author : </label><?php echo $result["author"]; ?></div>
 
-                <div><label>Category : </label><?php echo $result["category"]; ?></div>
+            <div><label>Category : </label><?php echo $result["category"]; ?></div>
 
-                <div><label>ISBN : </label><?php echo $result["isbn"]; ?></div>
+            <div><label>ISBN : </label><?php echo $result["isbn"]; ?></div>
 
-                <div class="input-group">
-                    <label for="status">Status</label>
-                    <select name="status" id="status">
-                        <option value="active">Active</option>
-                        <option value="inactive">Inactive</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="descrip">Description</label>
-                    <input type="text" name="descrip" placeholder="<?php echo $result['descrip']; ?>">
-                </div>
-                <div class="input-group">
-                    <label for="suggestion">Suggestion</label>
-                    <select name="suggestion" id="suggestion">
-                        <option value="suggestion">Suggestion</option>
-                        <option value="not suggestion">Not suggestion</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <button type="submit" name="update_book" class="btn">Update</button>
-                </div>
-            </form>
-        </div>
+            <div class="input-group">
+                <label for="status">Status</label>
+                <select name="status" id="status">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="descrip">Description</label>
+                <input type="text" name="descrip" placeholder="<?php echo $result['descrip']; ?>">
+            </div>
+            <div class="input-group">
+                <label for="suggestion">Suggestion</label>
+                <select name="suggestion" id="suggestion">
+                    <option value="suggestion">Suggestion</option>
+                    <option value="not suggestion">Not suggestion</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <button type="submit" name="update_book" class="btn">Update</button>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
