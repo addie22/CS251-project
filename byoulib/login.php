@@ -18,7 +18,6 @@ include('server.php');
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
-        color: white;
         text-align: center;
     }
 
@@ -34,6 +33,7 @@ include('server.php');
         width: 100%;
         height: 55px;
         background-color: #A0522D;
+        color: white;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -82,11 +82,40 @@ include('server.php');
         padding: 30px 10px;
     }
 
+    .header {
+        color: white;
+    }
+
+    .input-group label {
+        color: white;
+    }
+
+    .input-group input {
+        color: black;
+        text-align: left;
+    }
+    
+    form p a{
+        color: white;
+
+    }
+
+    form p a :hover{
+        text-decoration: none;
+        color: black;
+        
+    }
+
+    form p{
+        color: white;
+    }
+
     footer {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 50px;
+        color: white;
     }
 </style>
 

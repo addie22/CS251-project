@@ -122,10 +122,10 @@ if (!isset($_SESSION['username'])) {
             $result1 = mysqli_fetch_array($userquery);
             $userId = mysqli_escape_string($conn, $result1['memberID']);
 
-            $query2 = "SELECT * FROM book INNER JOIN borrow ON book.bookID = borrow.bookID WHERE borrow.memberID = '$userId'";
+            $query2 = "SELECT * FROM book INNER JOIN borrow ON book.bookID = borrow.bookID WHERE borrow.memberID = '$userId' AND borrow.status = 'Not return'";
             $borrowandbook = mysqli_query($conn, $query2);
 
-
+            
             while ($result2 = mysqli_fetch_array($borrowandbook)) {
             ?>
                 <tr>

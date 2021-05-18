@@ -22,12 +22,12 @@ if (isset($_POST['borrow_jump'])) {
     $result2 = mysqli_fetch_array($userquery);
     $memberId = $result2['memberID'];
     
-    $query3 = "UPDATE book SET status = 'inactive' WHERE bookID = '$bookId'";
+    $query3 = "UPDATE book SET status = 'inactive', borrowerID = '$memberId' WHERE bookID = '$bookId'";
     if($updatebookquery = mysqli_query($conn, $query3)){
 
     $query4 = "INSERT INTO borrow (bookID, memberID, returnDate) VALUES ('$bookId', '$memberId', NOW()+INTERVAL 15 DAY)";
     $borrowquery = mysqli_query($conn,$query4);
-    echo '<script>alert("Borrowing Completed");window.location.href="home.php";</script>';
+    echo '<script>alert("Borrowing Completed!\nกรุณาติดต่อเจ้าหน้าที่หน้าเคาท์เตอร์เพื่อรับหนังสือด้วยค่ะ");window.location.href="home.php";</script>';
 
     }else{
         echo '<script>alert("Borrowing Failed");window.location.href="search.php";</script>';

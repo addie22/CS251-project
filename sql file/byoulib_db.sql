@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 17, 2021 at 06:48 PM
+-- Generation Time: May 18, 2021 at 06:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -57,19 +57,20 @@ CREATE TABLE `book` (
   `status` varchar(30) DEFAULT NULL,
   `bookCover` varchar(200) DEFAULT NULL,
   `suggestion` varchar(100) DEFAULT NULL,
-  `descrip` text DEFAULT NULL
+  `descrip` text DEFAULT NULL,
+  `borrowerID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`bookID`, `isbn`, `bookName`, `author`, `category`, `price`, `status`, `bookCover`, `suggestion`, `descrip`) VALUES
-(1, '9786163016560', 'เซเปียนส์: ประวัติย่อมนุษยชาติ Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 'History', 530, 'active', 'เซเปียนส์- ประวัติย่อมนุษยชาติ.jpg', 'suggestion', ''),
-(2, '9786168221051', 'วิทยาศาสตร์: ประวัติศาสตร์การไขความจริงแห่งสรรพสิ่ง\r\nA Little History of Science', 'William Bynum', 'Education', 395, 'active', 'วิทยาศาสตร์- ประวัติศาสตร์การไขความจริงแห่งสรรพสิ่ง.jpg', 'suggestion', ''),
-(3, '9786169160113', 'เจ้าชายน้อย Le Pettit Prince', 'Antoine de Saint-Exupéry', 'Fiction', 190, 'active', 'เจ้าชายน้อย.jpg', 'suggestion', ''),
-(4, '9786168187111', 'สตีเฟน ฮอว์กิง ความคิดไร้ขีดจำกัด', 'ผู้จัดทำนิตยสาร BBC Focus และ BBC History', 'Biographies', 255, 'active', 'สตีเฟน ฮอว์กิง ความคิดไร้ขีดจำกัด.png', 'suggestion', ''),
-(5, '9786160451692', 'ขุมทรัพย์สุดปลายฝัน', 'Paulo Coelho', 'fiction', 225, 'active', 'ขุมทรัพย์สุดปลายฝัน.png', 'suggestion', '');
+INSERT INTO `book` (`bookID`, `isbn`, `bookName`, `author`, `category`, `price`, `status`, `bookCover`, `suggestion`, `descrip`, `borrowerID`) VALUES
+(1, '9786163016560', 'เซเปียนส์: ประวัติย่อมนุษยชาติ Sapiens: A Brief History of Humankind', 'Yuval Noah Harari', 'History', 530, 'active', 'เซเปียนส์- ประวัติย่อมนุษยชาติ.jpg', 'suggestion', '', NULL),
+(2, '9786168221051', 'วิทยาศาสตร์: ประวัติศาสตร์การไขความจริงแห่งสรรพสิ่ง\r\nA Little History of Science', 'William Bynum', 'Education', 395, 'active', 'วิทยาศาสตร์- ประวัติศาสตร์การไขความจริงแห่งสรรพสิ่ง.jpg', 'suggestion', '', NULL),
+(3, '9786169160113', 'เจ้าชายน้อย Le Pettit Prince', 'Antoine de Saint-Exupéry', 'Fiction', 190, 'active', 'เจ้าชายน้อย.jpg', 'suggestion', '', NULL),
+(4, '9786168187111', 'สตีเฟน ฮอว์กิง ความคิดไร้ขีดจำกัด', 'ผู้จัดทำนิตยสาร BBC Focus และ BBC History', 'Biographies', 255, 'active', 'สตีเฟน ฮอว์กิง ความคิดไร้ขีดจำกัด.png', 'suggestion', '', NULL),
+(5, '9786160451692', 'ขุมทรัพย์สุดปลายฝัน', 'Paulo Coelho', 'fiction', 225, 'active', 'ขุมทรัพย์สุดปลายฝัน.png', 'suggestion', '', NULL);
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,7 @@ INSERT INTO `book` (`bookID`, `isbn`, `bookName`, `author`, `category`, `price`,
 CREATE TABLE `borrow` (
   `bookID` int(11) NOT NULL,
   `memberID` int(11) NOT NULL,
-  `startDate` timestamp NULL DEFAULT current_timestamp(),
+  `startDate` date DEFAULT current_timestamp(),
   `returnDate` date DEFAULT current_timestamp(),
   `status` varchar(100) DEFAULT 'Not return'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -90,9 +91,13 @@ CREATE TABLE `borrow` (
 --
 
 INSERT INTO `borrow` (`bookID`, `memberID`, `startDate`, `returnDate`, `status`) VALUES
-(1, 1, '2021-05-16 17:00:00', '2021-06-01', 'returned'),
-(1, 2, '2021-05-16 17:00:00', '2021-06-01', 'returned'),
-(1, 1, '2021-05-17 15:53:23', '2021-06-01', 'returned');
+(1, 1, '2021-05-18', '2021-06-02', 'returned'),
+(1, 2, '2021-05-18', '2021-06-02', 'returned'),
+(1, 1, '2021-05-18', '2021-06-02', 'returned'),
+(1, 1, '2021-05-18', '2021-06-02', 'returned'),
+(2, 1, '2021-05-18', '2021-06-02', 'returned'),
+(1, 2, '2021-05-18', '2021-06-02', 'returned'),
+(3, 1, '2021-05-18', '2021-06-02', 'returned');
 
 -- --------------------------------------------------------
 
@@ -135,7 +140,8 @@ ALTER TABLE `adminsite`
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
-  ADD PRIMARY KEY (`bookID`);
+  ADD PRIMARY KEY (`bookID`),
+  ADD KEY `borrowerID` (`borrowerID`);
 
 --
 -- Indexes for table `borrow`
@@ -175,6 +181,12 @@ ALTER TABLE `member`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `book`
+--
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`borrowerID`) REFERENCES `member` (`memberID`);
 
 --
 -- Constraints for table `borrow`

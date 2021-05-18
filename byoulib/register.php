@@ -17,8 +17,6 @@ include('server.php');
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
-        color: white;
-        text-align: center;
     }
 
     body {
@@ -80,12 +78,51 @@ include('server.php');
         color: #EFF0F3;
         padding: 30px 10px;
     }
+    .header {
+        color: white;
+        text-align: center;
+    }
 
+    .input-group label {
+        color: white;
+        
+    }
+
+    .input-group input {
+        color: black;
+        text-align: left;
+    }
+    
+    form button{
+        text-align: center;
+    }
+    form p a{
+        color: white;
+        text-align: center;
+    }
+
+    form label{
+        text-align: center;
+    }
+
+    form p a :hover{
+        text-decoration: none;
+        color: black;
+        text-align: center;
+    }
+
+    form p{
+        color: white;
+        text-align: center;
+    }
     footer {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 50px;
+        color: white;
+        text-align: center;
+
     }
 
 </style>
@@ -125,10 +162,10 @@ include('server.php');
             </div>
         </div>
         <div class="header">
-            <br><h1>Register</h1><br>
+            <br><h1>Sign up</h1><br>
         </div>
         <div class="input-group">
-            <label for="username">Username</label>
+            <label for="username" style="align-content: center;">Username</label>
             <input type="text" name="username" required>
         </div>
         <div class="input-group">

@@ -208,6 +208,9 @@ if (isset($_GET['logout'])) {
                 </li>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
+                        <p><a href="myaccount.php"><?php echo $_SESSION['username']?></a></p>
+                    </li>
+                    <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>

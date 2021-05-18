@@ -19,12 +19,20 @@ if (isset($_POST['update_book'])) {
 
     $query2 = "SELECT bookID FROM book WHERE bookID = '$bookid' AND status = 'active'";
     $bookquery2 = mysqli_query($conn, $query2);
-    $result2 = mysqli_fetch_assoc($bookquery2);
-    $bookidreturn = mysqli_escape_string($conn, $result2['bookID']);
-    $query3 = "UPDATE borrow SET status = 'returned' WHERE bookID = '$bookidreturn'";
-    $dropquery = mysqli_query($conn, $query3);
 
-    echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';
+    if ($result2 = mysqli_fetch_assoc($bookquery2)) {
+        $bookidreturn = mysqli_escape_string($conn, $result2['bookID']);
+
+        $query4 = "UPDATE book SET borrowerID = NULL WHERE bookID = '$bookidreturn'";
+        $borroweridquery = mysqli_query($conn, $query4);
+
+        $query3 = "UPDATE borrow SET status = 'returned' WHERE bookID = '$bookidreturn'";
+        $dropquery = mysqli_query($conn, $query3);
+
+        echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';
+    } else {
+        echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';
+    }
 }
 ?>
 <!DOCTYPE html>

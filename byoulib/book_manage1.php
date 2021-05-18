@@ -149,17 +149,18 @@ if (isset($_POST["txtKeyword"])) {
                     <div align="center">Author</div>
                 </th>
                 <th width="198">
+                    <div align="center">Suggestion</div>
+                </th>
+                <th width="198">
                     <div align="center">Status</div>
                 </th>
                 <th width="198">
-                    <div align="center">Suggestion</div>
+                    <div align="center">Borrower ID</div>
                 </th>
 
             </tr>
-            <form method="post" action="book.php">
+            <form method="post">
                 <?php
-
-                
                     $query = "SELECT * FROM book WHERE bookName LIKE null OR bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
                     $searchquery = mysqli_query($conn, $query);
                 
@@ -182,10 +183,13 @@ if (isset($_POST["txtKeyword"])) {
                             <div align="center"><?php echo $result["author"]; ?></div>
                         </td>
                         <td>
+                            <div align="center"><?php echo $result["suggestion"]; ?></div>
+                        </td>
+                        <td>
                             <div align="center"><?php echo $result["status"]; ?></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["suggestion"]; ?></div>
+                            <div align="center"><?php echo $result["borrowerID"]; ?></div>
                         </td>
                     </tr>
                 <?php
