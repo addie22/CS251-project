@@ -87,6 +87,13 @@ if (isset($_GET['name'])) {
         color: #EFF0F3;
         padding: 30px 10px;
     }
+    img {
+    display: block;
+    max-width:180px;
+    max-height:180px;
+    width: auto;
+    height: auto;
+}
 </style>
 
 <body>

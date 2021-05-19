@@ -99,6 +99,20 @@ if (isset($_POST["txtKeyword"])) {
         clear: both;
         display: table;
     }
+
+    img {
+        display: block;
+        max-width: 180px;
+        max-height: 180px;
+        width: auto;
+        height: auto;
+    }
+
+    table {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>
 
 <body>

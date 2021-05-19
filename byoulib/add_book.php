@@ -20,20 +20,39 @@ if (!isset($_SESSION['username'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        text-align: center;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://pbs.twimg.com/media/EWIJmy2U8AMTJqs?format=jpg&name=large');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size: 125%
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #A0522D;
+        color: white;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+    }
+
+    button {
+        background-color: #8B4513;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
     }
 
     .right-group ul {
@@ -64,6 +83,42 @@ if (!isset($_SESSION['username'])) {
         text-decoration: none;
         color: #EFF0F3;
         padding: 30px 10px;
+    }
+
+    .header {
+        color: white;
+    }
+
+    .input-group label {
+        color: white;
+    }
+
+    .input-group input {
+        color: black;
+        text-align: left;
+    }
+    
+    form p a{
+        color: white;
+
+    }
+
+    form p a :hover{
+        text-decoration: none;
+        color: black;
+        
+    }
+
+    form p{
+        color: white;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+        color: white;
     }
 </style>
 
@@ -132,7 +187,7 @@ if (!isset($_SESSION['username'])) {
             <label for="descrip">Description</label>
             <input type="text" name="descrip">
         </div>
-        <div>
+        <div class="input-group">
             <label for="img">Select Book Cover:</label>
             <input type="hidden" name="size" value="1000000">
             <input type="file" name="image">
