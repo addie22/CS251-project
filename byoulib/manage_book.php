@@ -25,17 +25,23 @@ if (isset($_GET['logout'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        text-align: center;
+        color: white;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://image.makewebeasy.net/makeweb/0/lfZl8QEXr/ContentBook/02_Trinity_College_%E0%B9%84%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%99%E0%B8%94%E0%B9%8C.jpg');
+        background-repeat: no-repeat; 
+        background-attachment: fixed;  
+        background-size: cover;
+        font-size: 130%
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -70,6 +76,14 @@ if (isset($_GET['logout'])) {
         color: #EFF0F3;
         padding: 30px 10px;
     }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+    }
+
 </style>
 
 <body>
@@ -97,8 +111,9 @@ if (isset($_GET['logout'])) {
     </div>
     <div class="link-group">
         <div class="add_book">
-            <h4><a href="add_book.php">Add Book</a></h4>
-            <h4><a href="book_manage1.php">Book management</a></h4>
+            <br><h1>Byou Library</h1><br>
+            <h3><a href="add_book.php">Add Book</a></h3>
+            <h3><a href="book_manage1.php">Book management</a></h3>
 
         </div>
     </div>

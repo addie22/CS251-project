@@ -20,17 +20,23 @@ if (!isset($_SESSION['username'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        text-align: center;
+        color: white;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size: 135%;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #A0522D;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -67,12 +73,26 @@ if (!isset($_SESSION['username'])) {
     }
 
     img {
-    display: block;
-    max-width:180px;
-    max-height:180px;
-    width: auto;
-    height: auto;
-}
+        display: block;
+        max-width: 180px;
+        max-height: 180px;
+        width: auto;
+        height: auto;
+    }
+
+    table {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #A0522D;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+    }
 </style>
 
 <body>
@@ -101,7 +121,9 @@ if (!isset($_SESSION['username'])) {
         </div>
     </div>
     <div class="header">
+        <br>
         <h4>Renwe page</h4>
+        <br>
     </div>
     <table width="1200" border="1" align="center">
         <tr>
@@ -133,7 +155,7 @@ if (!isset($_SESSION['username'])) {
             $query2 = "SELECT * FROM book INNER JOIN borrow ON book.bookID = borrow.bookID WHERE borrow.memberID = '$userId' AND borrow.status = 'Not return'";
             $borrowandbook = mysqli_query($conn, $query2);
 
-            
+
             while ($result2 = mysqli_fetch_array($borrowandbook)) {
             ?>
                 <tr>

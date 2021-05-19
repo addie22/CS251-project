@@ -21,6 +21,18 @@ session_start();
         color: white;
     }
 
+    .gallery {
+        margin-top: 10px;
+        font-size: 18px;
+        height: 130px;
+        width: 130px;
+        border-radius: 50%;
+        background-color: #8B4513;
+        border: none;
+        flex-direction: row;
+
+    }
+
     img.top {
         vertical-align: top;
     }
@@ -122,7 +134,7 @@ session_start();
         font-size: 40px;
         text-align: center;
     }
-
+    
     footer {
         position: absolute;
         bottom: 0;

@@ -24,17 +24,23 @@ if (isset($_GET['id'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        text-align: center;
+        color: black;
     }
 
     body {
-        background: #EFF0F3;
+        /*background: #a36f5c;*/
+        background-image: url('https://image.freepik.com/free-vector/tropical-leaf-frame-brown-background_53876-98021.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #A0522D;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -73,6 +79,26 @@ if (isset($_GET['id'])) {
     form.display {
         align-items: center;
     }
+
+    footer {
+        position: auto;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
+    }
+
+    button {
+        background-color: #8B4513;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
 </style>
 
 <body>
@@ -87,9 +113,6 @@ if (isset($_GET['id'])) {
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p style="color: white;"><?php echo $_SESSION['username']; ?></p>
-                    </li>
-                    <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
@@ -102,10 +125,12 @@ if (isset($_GET['id'])) {
     </div>
 
     <form class="display" action="borrow.php" method="POST">
+        <br>
         <div><?php echo "<div id='img_div'>";
                 echo "<img src='images/" . $result['bookCover'] . "' >";
                 echo "</div>"; ?><br>
         </div>
+
         <div><?php echo "Book name : " . $result['bookName']; ?></div>
         <div><?php echo "Author : " . $result['author']; ?></div>
         <div><?php echo "Category : " . $result['category']; ?></div>
@@ -114,13 +139,13 @@ if (isset($_GET['id'])) {
         <div><?php echo "Status : " . $result['status']; ?></div>
         <div><?php echo "Description : " . $result['descrip']; ?></div>
 
-        <div>
+        <br><div>
             <?php if ($result['status'] == 'active') : ?>
                 <button name="borrow_jump">Borrow</button>
             <?php else : ?>
-                <p style="color: red;">Cannot Borrow</p>
+                <p style="color: #ff0000;">Cannot Borrow</p>
             <?php endif ?>
-        </div>
+        </div><br>
     </form>
     <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>

@@ -20,17 +20,23 @@ if (!isset($_SESSION['username'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        text-align: center;
+        color: white;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-size: cover;
+        font-size: 135%;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -65,6 +71,14 @@ if (!isset($_SESSION['username'])) {
         color: #EFF0F3;
         padding: 30px 10px;
     }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
+    }
+
 </style>
 
 <body>
@@ -79,9 +93,6 @@ if (!isset($_SESSION['username'])) {
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p style="color: white;"><?php echo $_SESSION['username']; ?></p>
-                    </li>
-                    <li>
                         <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
@@ -94,7 +105,7 @@ if (!isset($_SESSION['username'])) {
     </div>
     <div class="content">
         <div class="heading">
-            My Profile
+            <br><h1>My Profile</h1><br>
         </div>
 
         <form method="post">

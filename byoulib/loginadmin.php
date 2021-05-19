@@ -17,25 +17,16 @@ include('adminserver.php');
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
+        color: white;
         text-align: center;
     }
 
     body {
-        background-image: url('https://pbs.twimg.com/media/EWIJmy2U8AMTJqs?format=jpg&name=large');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-image: url('https://s359.kapook.com/pagebuilder/6e3b940d-dbad-491a-8faa-9d85891d57df.jpg');
+        background-repeat: no-repeat; 
+        background-attachment: fixed;  
         background-size: cover;
-        font-size: 125%
-    }
-
-    .nav {
-        width: 100%;
-        height: 55px;
-        background-color: #A0522D;
-        color: white;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        font-size: 150%
     }
 
     button {
@@ -49,6 +40,19 @@ include('adminserver.php');
         font-size: 16px;
         margin: 4px 2px;
         cursor: pointer;
+    }
+
+    input {
+        color : black;
+    }
+
+    .nav {
+        width: 100%;
+        height: 55px;
+        background-color: #662200;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
     }
 
     .right-group ul {
@@ -81,41 +85,13 @@ include('adminserver.php');
         padding: 30px 10px;
     }
 
-    .header {
-        color: white;
-    }
-
-    .input-group label {
-        color: white;
-    }
-
-    .input-group input {
-        color: black;
-        text-align: left;
-    }
-    
-    form p a{
-        color: white;
-
-    }
-
-    form p a :hover{
-        text-decoration: none;
-        color: black;
-        
-    }
-
-    form p{
-        color: white;
-    }
-
     footer {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 50px;
-        color: white;
     }
+
 </style>
 
 <body>
@@ -141,7 +117,7 @@ include('adminserver.php');
         </div>
     </div>
     <div class="header">
-        <h2>Login Admin</h2>
+        <br><h1>Login Admin</h1>
     </div>
 
     <!--  notification message -->
@@ -159,6 +135,7 @@ include('adminserver.php');
 
     <form action="loginadmin_db.php" method="post">
         <div class="input-group">
+            <br>
             <label for="username">Username</label>
             <input type="text" name="username">
         </div>
@@ -167,7 +144,7 @@ include('adminserver.php');
             <input type="password" name="password">
         </div>
         <div class="input-group">
-            <button type="submit" name="login_admin" class="btn">Login</button>
+            <br><button type="submit" name="login_admin" class="btn">Login</button>
         </div>
     </form>
     <div class="footer">

@@ -48,17 +48,23 @@ if (isset($_POST['update_book'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        text-align: center;
+        color: black;
     }
 
     body {
-        background: #EFF0F3;
+        /*background: #a36f5c;*/
+        background-image: url('https://image.freepik.com/free-vector/tropical-leaf-frame-brown-background_53876-98021.jpg');
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-size: cover;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -92,6 +98,30 @@ if (isset($_POST['update_book'])) {
         text-decoration: none;
         color: #EFF0F3;
         padding: 30px 10px;
+    }
+
+    form.display {
+        align-items: center;
+    }
+    
+    footer {
+        position: auto;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
+    }
+
+    button {
+        background-color: #8B4513;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
     }
 </style>
 
@@ -154,7 +184,7 @@ if (isset($_POST['update_book'])) {
             </div>
             <div class="input-group">
                 <label for="descrip">Description</label>
-                <input type="text" name="descrip" placeholder="<?php echo $result['descrip']; ?>">
+                <input type="text" name="descrip" placeholder="<?php echo $result['descrip']; ?>" value="<?php echo $result['descrip']; ?>">
             </div>
             <div class="input-group">
                 <label for="suggestion">Suggestion</label>
@@ -163,9 +193,9 @@ if (isset($_POST['update_book'])) {
                     <option value="not suggestion">Not suggestion</option>
                 </select>
             </div>
-            <div class="input-group">
+            <br><div class="input-group">
                 <button type="submit" name="update_book" class="btn">Update</button>
-            </div>
+            </div><br>
         </form>
     </div>
 </body>

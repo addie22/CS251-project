@@ -42,17 +42,22 @@ if (isset($_GET['name'])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        color: white;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size: 135%;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #A0522D;        
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -87,13 +92,28 @@ if (isset($_GET['name'])) {
         color: #EFF0F3;
         padding: 30px 10px;
     }
+
     img {
-    display: block;
-    max-width:180px;
-    max-height:180px;
-    width: auto;
-    height: auto;
-}
+        display: block;
+        max-width: 180px;
+        max-height: 180px;
+        width: auto;
+        height: auto;
+    }
+
+    table {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #A0522D;
+    }
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+    }
 </style>
 
 <body>
@@ -121,7 +141,7 @@ if (isset($_GET['name'])) {
             </ul>
         </div>
     </div>
-    <table width="1200" border="1" align="center">
+    <br><br><table width="1200" border="1" align="center">
         <tr>
             <th width="200">
                 <div align="center">Book Cover</div>
@@ -174,7 +194,7 @@ if (isset($_GET['name'])) {
             ?>
         </form>
     </table>
-    <div class="footer">
+    <div class="footer" align="center">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
     </div>
 </body>

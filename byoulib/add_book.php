@@ -192,7 +192,7 @@ if (!isset($_SESSION['username'])) {
             <input type="hidden" name="size" value="1000000">
             <input type="file" name="image">
         </div>
-        <div class="input-group">
+        <br><div class="input-group">
             <button type="submit" name="upload_book" class="btn">Upload</button>
         </div>
     </form>

@@ -23,17 +23,22 @@ if (isset($_POST["txtKeyword"])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        color: white;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
+        background-size: cover;
+        font-size: 125%;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #A0522D;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -76,13 +81,14 @@ if (isset($_POST["txtKeyword"])) {
         float: left;
         width: 80%;
         background: #f1f1f1;
+        color: black;
     }
 
     form.search button {
         float: left;
         width: 20%;
         padding: 10px;
-        background: #2196F3;
+        background: #662200;
         color: white;
         font-size: 17px;
         border: 1px solid grey;
@@ -112,6 +118,16 @@ if (isset($_POST["txtKeyword"])) {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
+        background-color: #A0522D;
+    }
+
+    footer {
+        margin-top: 10px;
+        position: relative;
+        text-align: center;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
     }
 </style>
 

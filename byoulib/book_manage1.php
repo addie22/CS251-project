@@ -23,17 +23,22 @@ if (isset($_POST["txtKeyword"])) {
         margin: 0;
         padding: 0%;
         box-sizing: border-box;
-        font-family: Arial;
+        font-family: Courier New;
+        color: white;
     }
 
     body {
-        background: #EFF0F3;
+        background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size: 135%;
     }
 
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #1A3873;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -76,14 +81,15 @@ if (isset($_POST["txtKeyword"])) {
         float: left;
         width: 80%;
         background: #f1f1f1;
+        color: black;
     }
 
     form.search button {
         float: left;
         width: 20%;
         padding: 10px;
-        background: #2196F3;
-        color: white;
+        background: #662200;
+        color: black;
         font-size: 17px;
         border: 1px solid grey;
         border-left: none;
@@ -101,13 +107,30 @@ if (isset($_POST["txtKeyword"])) {
     }
 
     img {
-    display: block;
-    max-width:180px;
-    max-height:180px;
-    width: auto;
-    height: auto;
-}
+        display: block;
+        max-width: 180px;
+        max-height: 180px;
+        width: auto;
+        height: auto;
+    }
+
+    table {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #A0522D;
+    }
+
+    footer {
+        margin-top: 10px;
+        position: relative;
+        text-align: center;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+    }
 </style>
+
 <body>
     <div class="nav">
         <div class="left-group">
@@ -131,8 +154,9 @@ if (isset($_POST["txtKeyword"])) {
             </ul>
         </div>
     </div>
-    <div class="header">
-        <h4>Book</h4>
+    <div class="header" align="center">
+        <br>
+        <h1>Book</h1><br>
     </div>
     <div class="input-group">
         <form class="search" method="post" action="search.php" style="margin:auto;max-width:500px">
@@ -157,21 +181,20 @@ if (isset($_POST["txtKeyword"])) {
                     <div align="center">Author</div>
                 </th>
                 <th width="198">
-                    <div align="center">Suggestion</div>
-                </th>
-                <th width="198">
                     <div align="center">Status</div>
                 </th>
                 <th width="198">
-                    <div align="center">Borrower ID</div>
+                    <div align="center">Suggestion</div>
                 </th>
 
             </tr>
-            <form method="post">
+            <form method="post" action="book.php">
                 <?php
-                    $query = "SELECT * FROM book WHERE bookName LIKE null OR bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
-                    $searchquery = mysqli_query($conn, $query);
-                
+
+
+                $query = "SELECT * FROM book WHERE bookName LIKE null OR bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
+                $searchquery = mysqli_query($conn, $query);
+
                 while ($result = mysqli_fetch_array($searchquery)) {
                 ?>
                     <tr>
@@ -191,13 +214,10 @@ if (isset($_POST["txtKeyword"])) {
                             <div align="center"><?php echo $result["author"]; ?></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["suggestion"]; ?></div>
-                        </td>
-                        <td>
                             <div align="center"><?php echo $result["status"]; ?></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["borrowerID"]; ?></div>
+                            <div align="center"><?php echo $result["suggestion"]; ?></div>
                         </td>
                     </tr>
                 <?php
@@ -205,6 +225,9 @@ if (isset($_POST["txtKeyword"])) {
                 ?>
             </form>
         </table>
+    </div>
+    <div class="footer">
+        <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
     </div>
 </body>
 

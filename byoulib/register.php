@@ -17,14 +17,20 @@ include('server.php');
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
+        color: white;
+        text-align: center;   
     }
 
     body {
-        background-image: url('https://images-ext-1.discordapp.net/external/bje5wo593mhBQYjj3ObKEL6x9jz_6NZotxs0y7NWFdg/https/pbs.twimg.com/media/EWIJDQ7U0AApu3E.jpg%3Alarge?width=1848&height=1040');
+        background-image: url('https://pbs.twimg.com/media/EWIJmxlVcAAaEZE?format=jpg&name=large');
         background-repeat: no-repeat; 
         background-attachment: fixed; 
         background-size: cover;
-        font-size: 125% 
+        font-size: 125%; 
+    }
+
+    input {
+        color : black;
     }
     
     button {
@@ -43,7 +49,7 @@ include('server.php');
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #A0522D;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -78,51 +84,25 @@ include('server.php');
         color: #EFF0F3;
         padding: 30px 10px;
     }
-    .header {
-        color: white;
-        text-align: center;
+
+    .col-25 {
+        float: none;
+        width: 100%;
+        margin-top: 2px;
     }
 
-    .input-group label {
-        color: white;
-        
+    form {
+        border-radius: 2px;
+        background-color: black;
+        opacity: 0.7;
+        filter: alpha(opacity=100);
     }
 
-    .input-group input {
-        color: black;
-        text-align: left;
-    }
-    
-    form button{
-        text-align: center;
-    }
-    form p a{
-        color: white;
-        text-align: center;
-    }
-
-    form label{
-        text-align: center;
-    }
-
-    form p a :hover{
-        text-decoration: none;
-        color: black;
-        text-align: center;
-    }
-
-    form p{
-        color: white;
-        text-align: center;
-    }
     footer {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 50px;
-        color: white;
-        text-align: center;
-
     }
 
 </style>
@@ -162,42 +142,56 @@ include('server.php');
             </div>
         </div>
         <div class="header">
-            <br><h1>Sign up</h1><br>
+            <br><h1>Register</h1><br>
         </div>
+
         <div class="input-group">
-            <label for="username" style="align-content: center;">Username</label>
-            <input type="text" name="username" required>
+            <div class="col-25">
+                <label for="username">Username</label> &emsp; &emsp; &emsp; &emsp; <input type="text" name="username" required>
+            </div>
         </div>
+
         <div class="input-group">
-            <label for="email">Email</label>
-            <input type="email" name="email" required>
+            <div class="col-25">
+                <label for="email">Email</label> &emsp; &emsp; &emsp; &emsp; &ensp; &ensp;<input type="email" name="email" required>
+            </div>
         </div>
+
         <div class="input-group">
-            <label for="fullname">Full Name</label>
-            <input type="text" name="fullname" required>
+            <div class="col-25">
+                <label for="fullname">Full Name</label> &emsp; &emsp; &emsp; &emsp;<input type="text" name="fullname" required>
+            </div>
         </div>
+        
         <div class="input-group">
-            <label for="citizenId">Citizen ID</label>
-            <input type="text" name="citizenId" required>
+            <div class="col-25">
+                <label for="citizenId">Citizen ID</label> &emsp; &ensp; &ensp; &nbsp; <input type="text" name="citizenId" required>
+            </div>
         </div>
+
         <div class="input-group">
-            <label for="phone">Phone Nmber</label>
-            <input type="text" name="phone" required>
+            <div class="col-25">
+                <label for="phone">Phone Nmber</label> &ensp; &ensp; &ensp; &nbsp; <input type="text" name="phone" required>
+            </div>
         </div>
+
         <div class="input-group">
-            <label for="password_1">Password</label>
-            <input type="password" name="password_1" required>
+            <div class="col-25">
+                <label for="password_1">Password</label> &emsp; &emsp; &emsp; &emsp; <input type="password" name="password_1" required>
+            </div>
         </div>
+
         <div class="input-group">
-            <label for="password_2">Confirm Password</label>
-            <input type="password" name="password_2" required>
+            <div class="col-25">
+                <label for="password_2">Confirm Password</label> &emsp; <input type="password" name="password_2" required>
+            </div>
         </div>
+
         <div class="input-group">
             <br>
             <button type="submit" name="reg_user" class="btn">Register</button>
         </div>
-        <br><p>Already a member? <a href="login.php">Sign in</a></p>
-
+        <br><p>Already a member? <a href="login.php">Sign in</a></p><br>
     </form>
     <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>

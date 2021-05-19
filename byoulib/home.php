@@ -45,7 +45,7 @@ if (isset($_GET['logout'])) {
     .nav {
         width: 100%;
         height: 55px;
-        background-color: #A0522D;
+        background-color: #662200;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -88,13 +88,14 @@ if (isset($_GET['logout'])) {
         float: left;
         width: 80%;
         background: #f1f1f1;
+        color: black;
     }
 
     form.search button {
         float: left;
         width: 20%;
         padding: 10px;
-        background: #E9967A;
+        background: #662200;
         color: white;
         font-size: 17px;
         border: 1px solid grey;
