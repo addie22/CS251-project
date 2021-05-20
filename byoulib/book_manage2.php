@@ -49,15 +49,14 @@ if (isset($_POST['update_book'])) {
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
-        text-align: center;
         color: black;
     }
 
     body {
         /*background: #a36f5c;*/
         background-image: url('https://image.freepik.com/free-vector/tropical-leaf-frame-brown-background_53876-98021.jpg');
-        background-repeat: no-repeat; 
-        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
     }
 
@@ -100,18 +99,28 @@ if (isset($_POST['update_book'])) {
         padding: 30px 10px;
     }
 
+    .header {
+        text-align: center;
+    }
+
     form.display {
+        text-align: center;
         align-items: center;
     }
-    
+
+    form {
+        text-align: center;
+    }
+
     footer {
-        position: auto;
+        position: absolute;
         bottom: 0;
         width: 100%;
         height: 30px;
     }
 
     button {
+        text-align: center;
         background-color: #8B4513;
         border: none;
         color: white;
@@ -148,9 +157,10 @@ if (isset($_POST['update_book'])) {
             </ul>
         </div>
     </div>
+    <br>
     <div class="header">
-        <h2>Manage Book</h2>
-    </div>
+        <h2>Book Management</h2>
+    </div><br>
     <div class="content">
         <?php if (isset($_GET['id'])) {
             $_SESSION['bookid'] = $_GET['id'];
@@ -193,7 +203,8 @@ if (isset($_POST['update_book'])) {
                     <option value="not suggestion">Not suggestion</option>
                 </select>
             </div>
-            <br><div class="input-group">
+            <br>
+            <div class="input-group">
                 <button type="submit" name="update_book" class="btn">Update</button>
             </div><br>
         </form>
