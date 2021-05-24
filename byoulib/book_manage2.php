@@ -29,6 +29,9 @@ if (isset($_POST['update_book'])) {
         $query3 = "UPDATE borrow SET status = 'returned' WHERE bookID = '$bookidreturn'";
         $dropquery = mysqli_query($conn, $query3);
 
+        $query5 = "DELETE FROM delivery WHERE bookID = '$bookidreturn'";
+        $dropquery2 = mysqli_query($conn,$query5);
+
         echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';
     } else {
         echo '<script>alert("Update book Completed");window.location.href="book_manage1.php";</script>';

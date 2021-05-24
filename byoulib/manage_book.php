@@ -114,7 +114,7 @@ if (isset($_GET['logout'])) {
             <br><h1>Byou Library</h1><br>
             <h3><a href="add_book.php">Add Book</a></h3>
             <h3><a href="book_manage1.php">Book management</a></h3>
-
+            <h3><a href="book_delivery.php">Book Delivery</a></h3>
         </div>
     </div>
     <div class="footer">

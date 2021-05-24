@@ -18,21 +18,21 @@ include('server.php');
         box-sizing: border-box;
         font-family: Courier New;
         color: white;
-        text-align: center;   
+        text-align: center;
     }
 
     body {
         background-image: url('https://pbs.twimg.com/media/EWIJmxlVcAAaEZE?format=jpg&name=large');
-        background-repeat: no-repeat; 
-        background-attachment: fixed; 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         background-size: cover;
-        font-size: 125%; 
+        font-size: 125%;
     }
 
     input {
-        color : black;
+        color: black;
     }
-    
+
     button {
         background-color: #A0522D;
         border: none;
@@ -104,8 +104,8 @@ include('server.php');
         width: 100%;
         height: 50px;
     }
-
 </style>
+
 <body>
     <form action="register_db.php" method="post">
         <!--  notification message -->
@@ -142,7 +142,8 @@ include('server.php');
             </div>
         </div>
         <div class="header">
-            <br><h1>Register</h1><br>
+            <br>
+            <h1>Register</h1><br>
         </div>
 
         <div class="input-group">
@@ -162,7 +163,7 @@ include('server.php');
                 <label for="fullname">Full Name</label> &emsp; &emsp; &emsp; &emsp;<input type="text" name="fullname" required>
             </div>
         </div>
-        
+
         <div class="input-group">
             <div class="col-25">
                 <label for="citizenId">Citizen ID</label> &emsp; &ensp; &ensp; &nbsp; <input type="text" name="citizenId" required>
@@ -191,7 +192,8 @@ include('server.php');
             <br>
             <button type="submit" name="reg_user" class="btn">Register</button>
         </div>
-        <br><p>Already a member? <a href="login.php">Sign in</a></p><br>
+        <br>
+        <p>Already a member? <a href="login.php">Sign in</a></p><br>
     </form>
     <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>

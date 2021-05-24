@@ -21,7 +21,6 @@ if (!isset($_SESSION['username'])) {
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
-        text-align: center;
         color: white;
     }
 
@@ -88,7 +87,9 @@ if (!isset($_SESSION['username'])) {
     }
 
     footer {
-        position: absolute;
+        margin-top: 10px;
+        position: relative;
+        text-align: center;
         bottom: 0;
         width: 100%;
         height: 50px;
@@ -120,10 +121,25 @@ if (!isset($_SESSION['username'])) {
             </ul>
         </div>
     </div>
-    <div class="header">
+    <div class="header" align="center">
         <br>
         <h4>Renwe page</h4>
         <br>
+    </div>
+    <?php
+    $username = $_SESSION['username'];
+    $query1 = "SELECT memberID FROM member WHERE userName = '$username'";
+    $userquery = mysqli_query($conn, $query1);
+    $result1 = mysqli_fetch_array($userquery);
+    $userId2 = mysqli_escape_string($conn, $result1['memberID']);
+
+    $query3 = "SELECT * FROM fines INNER JOIN member ON fines.memberID = member.memberID WHERE member.memberID = '$userId2'";
+    $penaltyquery = mysqli_query($conn, $query3);
+    $result3 = mysqli_fetch_array($penaltyquery);
+
+    ?>
+    <div class="penalty" align="center">
+        <h4>Penalty : <?php echo $result3['penalty']; ?></h4>
     </div>
     <table width="1200" border="1" align="center">
         <tr>

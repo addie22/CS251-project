@@ -50,12 +50,21 @@ if (isset($_POST['reg_user'])) {
     // fputs($fp, "$hits[0]");
     // fclose($fp);
     // $memberId = $hits[0];
-    
+
     if (count($errors) == 0) {
         $password = md5($password_1);
 
         $sql = "INSERT INTO member (userName, email, password, fullName, citizenID, phone) VALUES ('$username', '$email', '$password', '$fullname', '$citizenId', '$phone')";
         mysqli_query($conn, $sql);
+
+        $sql2 = "SELECT * FROM member WHERE userName = '$username'";
+        $registerquery = mysqli_query($conn, $sql2);
+        $result2 = mysqli_fetch_array($registerquery);
+        $userId = mysqli_escape_string($conn, $result2['memberID']);
+
+        $sql3 = "INSERT INTO fines (memberID, penalty, status) VALUES ('$userId', 0, 'Nofines')";
+        mysqli_query($conn, $sql3);
+
         $_SESSION['username'] = $username;
         $_SESSION['success'] = "You are now logged in";
         header('location: home.php');
