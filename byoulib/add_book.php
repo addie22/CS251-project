@@ -149,7 +149,7 @@ if (!isset($_SESSION['username'])) {
         <h2>Add Book</h2>
     </div>
 
-    <form action="add_book_db.php" method="post" enctype="multipart/form-data">
+    <form action="add_book_db.php" method="POST" enctype="multipart/form-data">
         <div class="input-group">
             <label for="bookname">Book Name</label>
             <input type="text" name="bookname" required>
@@ -189,8 +189,7 @@ if (!isset($_SESSION['username'])) {
         </div>
         <div class="input-group">
             <label for="img">Select Book Cover:</label>
-            <input type="hidden" name="size" value="1000000">
-            <input type="file" name="image">
+            <input type="file" name="fileToUpload" id="fileToUpload" style="color: #EFF0F3;" required>
         </div>
         <br><div class="input-group">
             <button type="submit" name="upload_book" class="btn">Upload</button>
