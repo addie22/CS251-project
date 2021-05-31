@@ -15,6 +15,104 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrow | Byoulib</title>
 </head>
+<style>
+     * {
+        margin: 0;
+        padding: 0%;
+        box-sizing: border-box;
+        font-family: Courier New;
+        color: white;
+        text-align: center;
+    }
+    button {
+        background-color: #662200;
+        border: none;
+        color: white;
+        padding: 10px 30px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #006600 ;
+       
+    }
+
+    body {
+        background-image: url('https://image.makewebeasy.net/makeweb/0/lfZl8QEXr/ContentBook/02_Trinity_College_%E0%B9%84%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%99%E0%B8%94%E0%B9%8C.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        font-size: 130%
+    }
+
+    .nav {
+        
+        width: 100%;
+        height: 55px;
+        background-color: #662200;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .logo{
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    }
+    .right-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .right-group ul li {
+        list-style: none;
+    }
+
+    .right-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 20px;
+    }
+    .left-group{
+    cursor: pointer;
+    margin-right: auto;
+    display: flex;
+    }
+
+    .left-group ul {
+        padding: 15px 20px;
+        display: flex;
+    }
+
+    .left-group ul li {
+        list-style: none;
+    }
+
+    .left-group ul li a {
+        text-decoration: none;
+        color: #EFF0F3;
+        padding: 30px 10px;
+    }
+    h3{
+        margin-top: 20px ;
+        margin-bottom: 20px;
+    }
+
+    textarea{
+    margin-top: 20px ;
+    margin-bottom: 20px;
+    width: 40%;
+    height: 20%;
+    color: black;
+    font-size: 20px;
+    }
+    
+</style>
 
 <body>
     <?php
@@ -57,7 +155,7 @@ if (!isset($_SESSION['username'])) {
             <div class="input-form">
                 <label for="address">Delivery Address</label><br>
                 <textarea name="address" rows="4" cols="50"></textarea><br>
-                <input type="submit" name="deliver_submit">
+                <input type="submit" name="deliver_submit" style="color: black;">
             </div>
         </form>
     <?php

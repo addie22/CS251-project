@@ -32,14 +32,20 @@ session_start();
     }
 
     .nav {
+        
         width: 100%;
         height: 55px;
-        background-color: #662200;
+        background-color: #8B4513;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
 
+    .logo{
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    }
     .right-group ul {
         padding: 15px 20px;
         display: flex;
@@ -53,6 +59,11 @@ session_start();
         text-decoration: none;
         color: #EFF0F3;
         padding: 30px 20px;
+    }
+    .left-group{
+    cursor: pointer;
+    margin-right: auto;
+    display: flex;
     }
 
     .left-group ul {
@@ -114,8 +125,14 @@ session_start();
         width: 80%;
         margin-left: auto;
         margin-right: auto;
-        background-color: #A0522D;
+        background-color: #8B4513;
+        border-collapse: collapse;
+        border: black;
     }
+    th, td {
+    padding: 15px;
+    
+}
 
     footer {
         margin-top: 10px;
