@@ -10,11 +10,6 @@ Web development Library System website with PHP language
 
 เริ่มโปรแกรม xampp และกด Start Apache และ MySQL จากนั้นกด Admin สำหรับ 
 
-windows os
-
-
-mac os
-
 
 เข้าสู่หน้า localhsot และกด phpMyAdmin มุมขวาบน
 
@@ -25,13 +20,6 @@ mac os
 
 
 ดาวน์โหลดไฟล์ Code และ Database ได้จาก https://github.com/addie22/CS251-project.git   และแตก zip file
-
-
-
-
-
-
-
 
 
 
