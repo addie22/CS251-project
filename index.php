@@ -1,14 +1,14 @@
 <?php
-// include('server.php');
-// session_start();
-// ini_set('display_errors', 1);
-// error_reporting(~0);
+include('server.php');
+session_start();
+ini_set('display_errors', 1);
+error_reporting(~0);
 
 
-// if (isset($_GET['logout'])) {
-//     session_destroy();
-//     unset($_SESSION['username']);
-//     header('location: index.php');
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header('location: index.php');
 }
 
 
