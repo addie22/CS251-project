@@ -145,9 +145,9 @@ if (!isset($_SESSION['username'])) {
 
             $query4 = "INSERT INTO borrow (bookID, memberID, returnDate) VALUES ('$bookId', '$memberId', NOW()+INTERVAL 15 DAY)";
             $borrowquery = mysqli_query($conn, $query4);
-            echo '<script>alert("Borrowing Completed!\nกรุณาติดต่อเจ้าหน้าที่หน้าเคาท์เตอร์เพื่อรับหนังสือด้วยค่ะ");window.location.href="home.php";</script>';
+            echo '<script>alert("Borrowing Completed!\nกรุณาติดต่อเจ้าหน้าที่หน้าเคาท์เตอร์เพื่อรับหนังสือด้วยค่ะ");window.location.href="index.php";</script>';
         } else {
-            echo '<script>alert("Borrowing Failed");window.location.href="home.php";</script>';
+            echo '<script>alert("Borrowing Failed");window.location.href="index.php";</script>';
         }
         mysqli_close($conn);
     } elseif (isset($_POST['delivery'])) { ?>

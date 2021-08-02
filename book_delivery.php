@@ -1,11 +1,7 @@
 <?php
 include('server.php');
 session_start();
-$strKeyword = null;
 
-if (isset($_POST["txtKeyword"])) {
-    $strKeyword = $_POST["txtKeyword"];
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +10,7 @@ if (isset($_POST["txtKeyword"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Management</title>
+    <title>Book Delivery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
@@ -36,14 +32,20 @@ if (isset($_POST["txtKeyword"])) {
     }
 
     .nav {
+        
         width: 100%;
         height: 55px;
-        background-color: #662200;
+        background-color: #8B4513;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
 
+    .logo{
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: auto;
+    }
     .right-group ul {
         padding: 15px 20px;
         display: flex;
@@ -57,6 +59,11 @@ if (isset($_POST["txtKeyword"])) {
         text-decoration: none;
         color: #EFF0F3;
         padding: 30px 20px;
+    }
+    .left-group{
+    cursor: pointer;
+    margin-right: auto;
+    display: flex;
     }
 
     .left-group ul {
@@ -118,8 +125,14 @@ if (isset($_POST["txtKeyword"])) {
         width: 80%;
         margin-left: auto;
         margin-right: auto;
-        background-color: #A0522D;
+        background-color: #8B4513;
+        border-collapse: collapse;
+        border: black;
     }
+    th, td {
+    padding: 15px;
+    
+}
 
     footer {
         margin-top: 10px;
@@ -144,7 +157,7 @@ if (isset($_POST["txtKeyword"])) {
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>
@@ -156,13 +169,7 @@ if (isset($_POST["txtKeyword"])) {
     </div>
     <div class="header" align="center">
         <br>
-        <h1>Book</h1><br>
-    </div>
-    <div class="input-group">
-        <form class="search" method="post" action="search.php" style="margin:auto;max-width:500px">
-            <input name="txtKeyword" type="text" id="txtKeyword" placeholder="Book name, ISBN, Author...">
-            <button type="submit" name="search"><i class="fa fa-search"></i></button>
-        </form>
+        <h1>Book Delivery</h1><br>
     </div>
     <br>
     <div class="content">
@@ -181,49 +188,41 @@ if (isset($_POST["txtKeyword"])) {
                     <div align="center">Author</div>
                 </th>
                 <th width="198">
-                    <div align="center">Status</div>
-                </th>
-                <th width="198">
-                    <div align="center">Suggestion</div>
-                </th>
-                <th width="198">
                     <div align="center">Borrower ID</div>
                 </th>
-
+                <th width="198">
+                    <div align="center">Delivery Address</div>
+                </th>
             </tr>
-            <form method="post" action="book.php">
+            <form method="post">
                 <?php
 
+                $query2 = "SELECT * FROM delivery INNER JOIN book ON delivery.bookID = book.bookID ";
+                $deliverybook = mysqli_query($conn, $query2);
 
-                $query = "SELECT * FROM book WHERE bookName LIKE null OR bookName LIKE '%" . $strKeyword . "%' OR category LIKE '%" . $strKeyword . "%' OR isbn LIKE '%" . $strKeyword . "%' OR author LIKE '%" . $strKeyword . "%' ";
-                $searchquery = mysqli_query($conn, $query);
-
-                while ($result = mysqli_fetch_array($searchquery)) {
+                while ($result2 = mysqli_fetch_array($deliverybook)) {
                 ?>
                     <tr>
                         <td>
                             <div align="center"><?php
                                                 echo "<div id='img_div'>";
-                                                echo "<img src='images/" . $result['bookCover'] . "' >";
+                                                echo "<img src='images/" . $result2['bookCover'] . "' >";
                                                 echo "</div>"; ?><div>
                         </td>
                         <td>
-                            <div align="center"><a href="book_manage2.php?id=<?php echo $result['bookID']; ?>"><?php echo $result["bookName"]; ?></a></div>
+                            <div align="center"><?php echo $result2["bookName"]; ?></a></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["category"]; ?></div>
+                            <div align="center"><?php echo $result2["category"]; ?></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["author"]; ?></div>
+                            <div align="center"><?php echo $result2["author"]; ?></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["status"]; ?></div>
+                            <div align="center"><?php echo $result2["borrowerID"]; ?></div>
                         </td>
                         <td>
-                            <div align="center"><?php echo $result["suggestion"]; ?></div>
-                        </td>
-                        <td>
-                            <div align="center"><?php echo $result["borrowerID"]; ?></div>
+                            <div align="center"><?php echo $result2["address"]; ?></div>
                         </td>
                     </tr>
                 <?php

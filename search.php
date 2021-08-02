@@ -2,30 +2,10 @@
 include('server.php');
 session_start();
 
-if (isset($_GET['name'])) {
-    $categoryname = mysqli_escape_string($conn, $_GET['name']);
-    $query = "SELECT * FROM book WHERE category = '$categoryname'";
-    $searchquery = mysqli_query($conn, $query);
-} elseif (isset($_GET['name'])) {
-    $categoryname = mysqli_escape_string($conn, $_GET['name']);
-    $query = "SELECT * FROM book WHERE category = '$categoryname'";
-    $searchquery = mysqli_query($conn, $query);
-} elseif (isset($_GET['name'])) {
-    $categoryname = mysqli_escape_string($conn, $_GET['name']);
-    $query = "SELECT * FROM book WHERE category = '$categoryname'";
-    $searchquery = mysqli_query($conn, $query);
-} elseif (isset($_GET['name'])) {
-    $categoryname = mysqli_escape_string($conn, $_GET['name']);
-    $query = "SELECT * FROM book WHERE category = '$categoryname'";
-    $searchquery = mysqli_query($conn, $query);
-} elseif (isset($_GET['name'])) {
-    $categoryname = mysqli_escape_string($conn, $_GET['name']);
-    $query = "SELECT * FROM book WHERE category = '$categoryname'";
-    $searchquery = mysqli_query($conn, $query);
-} elseif (isset($_GET['name'])) {
-    $categoryname = mysqli_escape_string($conn, $_GET['name']);
-    $query = "SELECT * FROM book WHERE category = '$categoryname'";
-    $searchquery = mysqli_query($conn, $query);
+$strKeyword = null;
+
+if (isset($_POST["txtKeyword"])) {
+    $strKeyword = $_POST["txtKeyword"];
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +15,8 @@ if (isset($_GET['name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $_GET['name'] ;?> | Byoulib</title>
+    <title>Search | Byoulib</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
     * {
@@ -48,10 +29,10 @@ if (isset($_GET['name'])) {
 
     body {
         background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        background-repeat: no-repeat; 
+        background-attachment: fixed; 
         background-size: cover;
-        font-size: 135%;
+        font-size: 125%;
     }
 
     .nav {
@@ -93,6 +74,38 @@ if (isset($_GET['name'])) {
         padding: 30px 10px;
     }
 
+    form.search input[type=text] {
+        padding: 10px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+        color: black;
+    }
+
+    form.search button {
+        float: left;
+        width: 20%;
+        padding: 10px;
+        background: #662200;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        border-left: none;
+        cursor: pointer;
+    }
+
+    form.search button:hover {
+        background: #0b7dda;
+    }
+
+    form.search::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
     img {
         display: block;
         max-width: 180px;
@@ -109,7 +122,9 @@ if (isset($_GET['name'])) {
     }
 
     footer {
-        position: absolute;
+        margin-top: 10px;
+        position: relative;
+        text-align: center;
         bottom: 0;
         width: 100%;
         height: 50px;
@@ -120,7 +135,7 @@ if (isset($_GET['name'])) {
     <div class="nav">
         <div class="left-group">
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div>
@@ -128,10 +143,7 @@ if (isset($_GET['name'])) {
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p style="color: white;"><?php echo $_SESSION['username']; ?></p>
-                    </li>
-                    <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>
@@ -141,7 +153,15 @@ if (isset($_GET['name'])) {
             </ul>
         </div>
     </div>
-    <br><br><table width="1200" border="1" align="center">
+    <br>
+    <div class="input-group">
+        <form class="search" method="post" action="search.php" style="margin:auto;max-width:500px">
+            <input name="txtKeyword" type="text" id="txtKeyword" placeholder="Book name, ISBN, Author...">
+            <button type="submit" name="search"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <br>
+    <table width="1200" border="1" align="center">
         <tr>
             <th width="200">
                 <div align="center">Book Cover</div>
@@ -194,7 +214,7 @@ if (isset($_GET['name'])) {
             ?>
         </form>
     </table>
-    <div class="footer" align="center">
+    <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
     </div>
 </body>

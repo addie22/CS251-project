@@ -27,9 +27,9 @@ if (isset($_POST['deliver_submit'])) {
         
         $deliveryquery = "INSERT INTO delivery (memberID, bookID, address) VALUES ('$memberId', '$bookId', '$address')";
         $query5 = mysqli_query($conn, $deliveryquery);
-        echo '<script>alert("Borrowing Completed!\nขอบคุณที่ใช้บริการ Byoulib ของเรานะคะ");window.location.href="home.php";</script>';
+        echo '<script>alert("Borrowing Completed!\nขอบคุณที่ใช้บริการ Byoulib ของเรานะคะ");window.location.href="index.php";</script>';
     } else {
-        echo '<script>alert("Borrowing Failed");window.location.href="home.php";</script>';
+        echo '<script>alert("Borrowing Failed");window.location.href="index.php";</script>';
     }
     mysqli_close($conn);
 }

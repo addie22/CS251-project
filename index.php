@@ -1,4 +1,3 @@
-
 <?php
 include('server.php');
 session_start();
@@ -9,7 +8,7 @@ error_reporting(~0);
 if (isset($_GET['logout'])) {
     session_destroy();
     unset($_SESSION['username']);
-    header('location: home.php');
+    header('location: index.php');
 }
 
 
@@ -126,7 +125,7 @@ if (isset($_GET['logout'])) {
     <div class="nav">
         <div class="left-group">
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div>
@@ -140,7 +139,7 @@ if (isset($_GET['logout'])) {
                         <p><a href="myaccount.php"><?php echo $_SESSION['username'] ?></a></p>
                     </li>
                     <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>

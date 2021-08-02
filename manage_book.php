@@ -1,15 +1,24 @@
 <?php
-session_start();
 include('adminserver.php');
-?>
+session_start();
 
+if (!isset($_SESSION['username'])) {
+    header('location: loginadmin.php');
+}
+if (isset($_GET['logout'])) {
+    session_destroy();
+    unset($_SESSION['username']);
+    header('location: index.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin</title>
+    <title>Book Management</title>
 </head>
 <style>
     * {
@@ -17,33 +26,16 @@ include('adminserver.php');
         padding: 0%;
         box-sizing: border-box;
         font-family: Courier New;
-        color: white;
         text-align: center;
+        color: white;
     }
 
     body {
-        background-image: url('https://s359.kapook.com/pagebuilder/6e3b940d-dbad-491a-8faa-9d85891d57df.jpg');
+        background-image: url('https://image.makewebeasy.net/makeweb/0/lfZl8QEXr/ContentBook/02_Trinity_College_%E0%B9%84%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%99%E0%B8%94%E0%B9%8C.jpg');
         background-repeat: no-repeat; 
         background-attachment: fixed;  
         background-size: cover;
-        font-size: 150%
-    }
-
-    button {
-        background-color: #8B4513;
-        border: none;
-        color: white;
-        padding: 10px 30px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        cursor: pointer;
-    }
-
-    input {
-        color : black;
+        font-size: 130%
     }
 
     .nav {
@@ -98,15 +90,16 @@ include('adminserver.php');
     <div class="nav">
         <div class="left-group">
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="manage_book.php">Management</a></li>
             </ul>
         </div>
         <div class="right-group">
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>
@@ -116,37 +109,14 @@ include('adminserver.php');
             </ul>
         </div>
     </div>
-    <div class="header">
-        <br><h1>Login Admin</h1>
+    <div class="link-group">
+        <div class="add_book">
+            <br><h1>Byou Library</h1><br>
+            <h3><a href="add_book.php">Add Book</a></h3>
+            <h3><a href="book_manage1.php">Book management</a></h3>
+            <h3><a href="book_delivery.php">Book Delivery</a></h3>
+        </div>
     </div>
-
-    <!--  notification message -->
-    <div><?php if (isset($_SESSION['error'])) : ?>
-            <div class="error">
-                <h3>
-                    <?php
-                    echo $_SESSION['error'];
-                    unset($_SESSION['error']);
-                    ?>
-                </h3>
-            </div>
-        <?php endif ?>
-    </div>
-
-    <form action="loginadmin_db.php" method="post">
-        <div class="input-group">
-            <br>
-            <label for="username">Username</label>
-            <input type="text" name="username">
-        </div>
-        <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" name="password">
-        </div>
-        <div class="input-group">
-            <br><button type="submit" name="login_admin" class="btn">Login</button>
-        </div>
-    </form>
     <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
     </div>

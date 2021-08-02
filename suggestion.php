@@ -96,7 +96,7 @@ session_start();
     <div class="nav">
         <div class="left-group">
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#about">About</a></li>
             </ul>
         </div>
@@ -104,7 +104,7 @@ session_start();
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>

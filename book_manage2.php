@@ -150,7 +150,7 @@ if (isset($_POST['update_book'])) {
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>

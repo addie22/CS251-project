@@ -1,14 +1,9 @@
 <?php
-include('adminserver.php');
+include('server.php');
 session_start();
 
 if (!isset($_SESSION['username'])) {
-    header('location: loginadmin.php');
-}
-if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header('location: home.php');
+    header('location: login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -18,7 +13,7 @@ if (isset($_GET['logout'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Management</title>
+    <title>Account | Byoulib</title>
 </head>
 <style>
     * {
@@ -31,11 +26,11 @@ if (isset($_GET['logout'])) {
     }
 
     body {
-        background-image: url('https://image.makewebeasy.net/makeweb/0/lfZl8QEXr/ContentBook/02_Trinity_College_%E0%B9%84%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%81%E0%B8%A5%E0%B8%99%E0%B8%94%E0%B9%8C.jpg');
+        background-image: url('https://c.pxhere.com/photos/a6/62/life_beauty_scene_library_books_architecture_ornate_vintage-707871.jpg!d');
         background-repeat: no-repeat; 
-        background-attachment: fixed;  
+        background-attachment: fixed; 
         background-size: cover;
-        font-size: 130%
+        font-size: 135%;
     }
 
     .nav {
@@ -81,7 +76,7 @@ if (isset($_GET['logout'])) {
         position: absolute;
         bottom: 0;
         width: 100%;
-        height: 50px;
+        height: 30px;
     }
 
 </style>
@@ -90,16 +85,15 @@ if (isset($_GET['logout'])) {
     <div class="nav">
         <div class="left-group">
             <ul>
-                <li><a href="home.php">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="manage_book.php">Management</a></li>
             </ul>
         </div>
         <div class="right-group">
             <ul>
                 <?php if (isset($_SESSION['username'])) : ?>
                     <li>
-                        <p><a href="home.php?logout='1'" style="color: red;">Logout</a></p>
+                        <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
                     </li>
                 <?php else : ?>
                     <li>
@@ -109,13 +103,31 @@ if (isset($_GET['logout'])) {
             </ul>
         </div>
     </div>
-    <div class="link-group">
-        <div class="add_book">
-            <br><h1>Byou Library</h1><br>
-            <h3><a href="add_book.php">Add Book</a></h3>
-            <h3><a href="book_manage1.php">Book management</a></h3>
-            <h3><a href="book_delivery.php">Book Delivery</a></h3>
+    <div class="content">
+        <div class="heading">
+            <br><h1>My Profile</h1><br>
         </div>
+
+        <form method="post">
+            <?php
+            if (isset($_SESSION['username'])) {
+                $username = mysqli_escape_string($conn, $_SESSION['username']);
+                $query = "SELECT * FROM member WHERE userName = '$username'";
+                $userquery = mysqli_query($conn, $query);
+                $result = mysqli_fetch_array($userquery);
+            } ?>
+
+            <div><?php echo "Username : " . $result['userName']; ?></div>
+            <div><?php echo "Full name : " . $result['fullName']; ?></div>
+            <div><?php echo "Citizen ID : " . $result['citizenID']; ?></div>
+            <div><?php echo "Email : " . $result['email']; ?></div>
+            <div><?php echo "Phone number : " . $result['phone']; ?></div>
+
+            <?php
+            mysqli_close($conn);
+            ?>
+            <!-- <button type="submit" name="update" class="btn btn-primary" id="submit">Update Now </button> -->
+        </form>
     </div>
     <div class="footer">
         <footer>&copy; Copyright 2021 Byoulibrary at CS251 Database</footer>
