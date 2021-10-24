@@ -19,7 +19,7 @@ Web development Library System website with PHP language
 เข้ามาสู่หน้า MySQL ให้สร้าง Database ชื่อว่า byoulib_db และกด Create
 
 
-ดาวน์โหลดไฟล์ Code และ Database ได้จาก https://github.com/addie22/CS251-project.git   และแตก zip file
+ดาวน์โหลดไฟล์ Code และ Database ได้จาก https://github.com/thedeenun/CS251_web-development-project และแตก zip file
 
 
 
