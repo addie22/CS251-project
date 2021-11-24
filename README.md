@@ -19,7 +19,7 @@ Web development Library System website with PHP language
 เข้ามาสู่หน้า MySQL ให้สร้าง Database ชื่อว่า byoulib_db และกด Create
 
 
-ดาวน์โหลดไฟล์ Code และ Database ได้จาก https://github.com/addie22/CS251-project.git   และแตก zip file
+ดาวน์โหลดไฟล์ Code และ Database ได้จาก https://github.com/thedeenun/CS251_web-development-project และแตก zip file
 
 
 
@@ -29,7 +29,7 @@ Import sql file เข้า MySQL  “byoulib_db.sql”
 
 นำโฟลเดอร์ byoulib (code) ไปวางไว้ในไดเรกทอรี่ของ xampp  /htdocs
 
-เปิด google chrome พิมพ์ url http://localhost/CS251/byoulib/home.php เป็นหน้า homepage ของ website
+เปิด google chrome พิมพ์ url http://localhost/CS251_web-development-project/index.php เป็นหน้า homepage ของ website
 
 
 สำหรับเจ้าหน้าที่ห้องสมุด
